@@ -832,4 +832,254 @@
 
                 <h3>Personal Skills</h3>
 
-                <div class="t
+                <div class="tags">
+
+                    <span class="tag">Time Management</span>
+                    <span class="tag">Leadership</span>
+                    <span class="tag">Critical Thinking</span>
+                    <span class="tag">Team Collaboration</span>
+                    <span class="tag">Project Manager</span>
+                    <span class="tag">UI/UX DESIGN</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- EVENTS -->
+    <section>
+
+        <div class="section-title reveal">
+            <small>LEARNING EXPERIENCES</small>
+            <h2>Activities</h2>
+        </div>
+
+        <div class="events reveal">
+
+            <div class="event">
+
+                <h3>Leadership Camp</h3>
+
+                <p>
+                    PHINMA-UNIVERSITY OF PANGASINAN — 2023
+                </p>
+
+            </div>
+
+            <div class="event">
+
+                <h3>Python Seminar for Freshmen Students</h3>
+
+                <p>
+                    PHINMA-UNIVERSITY OF PANGASINAN — 2023
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title reveal">
+
+            <small>MY WORK</small>
+
+            <h2>School Projects</h2>
+
+            <p>
+                Projects and applications developed throughout my studies.
+            </p>
+
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- PROJECT 1 -->
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>Budget Tracker</h3>
+
+                <div class="project-tech">
+                    JAVA | FIRST YEAR FIRST SEMESTER
+                </div>
+
+                <p>
+                    The budget Tracker is help to monitor how much of your
+                    budget has been spent over time. And also this tracker
+                    see how they compare to a monthly and weekly.
+                </p>
+
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>Cooking Buddy</h3>
+
+                <div class="project-tech">
+                    HTML AND CSS | FIRST YEAR SECOND SEMESTER
+                </div>
+
+                <p>
+                    Cooking Buddy is a user-friendly recipe generator
+                    designed to simplify meal planning and cooking.
+                    Whether you're looking to use up ingredients in your
+                    pantry that turn into Filipino dishes.
+                </p>
+
+            </div>
+
+            <!-- PROJECT 3 -->
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>Geography Snap</h3>
+
+                <div class="project-tech">
+                    KOTLIN AND PHP | SECOND YEAR FIRST SEMESTER
+                </div>
+
+                <p>
+                    Geography Snap is a mobile game designed to test players
+                    knowledge of geography. Players will be presented with
+                    a series of challenges, such as identifying flags or
+                    capitals related to different countries. The game will
+                    feature multiple difficulty levels, unlockable content,
+                    and a leaderboard to encourage competition among players.
+                </p>
+
+            </div>
+
+            <!-- PROJECT 4 -->
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>AutoLink</h3>
+
+                <div class="project-tech">
+                    WEB : HTML, CSS, AND JAVASCRIPT |
+                    SECOND YEAR SECOND SEMESTER
+                </div>
+
+                <p>
+                    AutoLink is a project aimed at providing an all-in-one
+                    platform for car owners and service providers. The mobile
+                    app helps car owners manage their vehicles maintenance
+                    schedules, track fuel efficiency, and connect with nearby
+                    service centers. The web portal enables mechanics and
+                    service providers to manage appointments, view customer
+                    histories, and provide tailored services.
+                </p>
+
+                <br>
+
+                <div class="project-tech">
+                    MOBILE : KOTLIN | APP : KOTLIN AND PHP
+                </div>
+
+            </div>
+
+            <!-- PROJECT 5 -->
+            <div class="project-card reveal">
+
+                <div class="project-number">
+                    PROJECT 05
+                </div>
+
+                <h3>
+                    RentifyPro: Advanced Vehicle Rental System
+                    with AI, Blockchain, and Analytics
+                </h3>
+
+                <div class="project-tech">
+                    REACT | CSS | NODE.JS | JAVASCRIPT |
+                    MONGODB ATLAS | PYTHON | RASA
+                </div>
+
+                <p>
+                    RentifyPro is a web-based vehicle rental system that uses
+                    AI, blockchain, and analytics to modernize rental
+                    operations. It allows users to browse vehicles, book
+                    online, and make secure payments, while providing
+                    personalized recommendations and data-driven insights.
+                    The system serves renters, rental staff, and
+                    administrators—supporting booking, vehicle management,
+                    transactions, and system oversight. By automating
+                    processes, it reduces manual work, improves transparency,
+                    enhances efficiency, and strengthens security.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            Made with <span>♥</span> by R-MIA M. VIDAL
+        </p>
+
+        <p style="margin-top:8px;">
+            INFORMATION TECHNOLOGY
+        </p>
+
+    </footer>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add('active');
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        reveals.forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
+
+</body>
+</html>
