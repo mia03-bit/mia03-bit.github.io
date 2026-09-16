@@ -1,558 +1,467 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Your Name | CV & Portfolio</title>
-
+    <title>Emmanuel Deocares - Resume Portfolio</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --border: #334155;
         }
 
-        html {
-            scroll-behavior: smooth;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: "Inter", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #1e293b;
-            background: #f8fafc;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
+            padding: 20px;
         }
 
         .container {
-            width: min(1120px, 90%);
-            margin: auto;
-        }
-
-        /* ==============================
-           NAVIGATION
-        ============================== */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        nav {
-            height: 72px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #0f172a;
-        }
-
-        .logo span {
-            color: #2563eb;
-        }
-
-        .nav-links {
-            display: flex;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
             gap: 30px;
         }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #475569;
-
-            transition: 0.3s ease;
+        /* --- LEFT SIDEBAR --- */
+        .sidebar {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
         }
 
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        .menu-btn {
-            display: none;
-
-            border: none;
-            background: transparent;
-
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ==============================
-           HERO
-        ============================== */
-
-        .hero {
-            min-height: 100vh;
-            padding-top: 72px;
-
-            display: flex;
-            align-items: center;
-
-            background:
-                radial-gradient(
-                    circle at 85% 20%,
-                    rgba(37, 99, 235, 0.12),
-                    transparent 30%
-                ),
-                #f8fafc;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .hero-text .small-title {
-            color: #2563eb;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(2.7rem, 6vw, 5rem);
-            line-height: 1.05;
-            color: #0f172a;
-            margin-bottom: 20px;
-            letter-spacing: -3px;
-        }
-
-        .hero-text h1 span {
-            color: #2563eb;
-        }
-
-        .hero-text p {
-            max-width: 600px;
-            color: #64748b;
-            font-size: 1.05rem;
+        .profile-section {
+            text-align: center;
             margin-bottom: 30px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 13px 22px;
-
-            border-radius: 8px;
-
-            font-weight: 600;
-            font-size: 0.9rem;
-
-            transition: 0.3s ease;
-        }
-
-        .btn-primary {
-            background: #2563eb;
-            color: white;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            border: 1px solid #cbd5e1;
-            color: #334155;
-            background: white;
-        }
-
-        .btn-secondary:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-            transform: translateY(-2px);
-        }
-
-        /* Profile */
-
-        .profile-wrapper {
-            display: flex;
-            justify-content: center;
-        }
-
-        .profile-card {
-            width: 300px;
-            padding: 12px;
-
-            background: white;
-            border-radius: 20px;
-
-            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
-
-            transform: rotate(2deg);
-            transition: 0.4s ease;
-        }
-
-        .profile-card:hover {
-            transform: rotate(0deg) translateY(-5px);
-        }
-
-        .profile-photo {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-
-            border-radius: 14px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: linear-gradient(
-                135deg,
-                #dbeafe,
-                #eff6ff
-            );
-
-            color: #2563eb;
-            font-size: 4rem;
-            font-weight: 800;
-        }
-
-        /* ==============================
-           GENERAL SECTION
-        ============================== */
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            margin-bottom: 50px;
-        }
-
-        .section-header span {
-            color: #2563eb;
-            font-size: 0.8rem;
-            font-weight: 800;
-
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-header h2 {
-            font-size: 2.3rem;
-            color: #0f172a;
-            margin-top: 8px;
-        }
-
-        .section-header p {
-            color: #64748b;
-            max-width: 600px;
-            margin-top: 10px;
-        }
-
-        
-
-        .about {
-            background: white;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text p {
-            color: #64748b;
-            margin-bottom: 18px;
-        }
-
-        .personal-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .info-item {
-            padding: 18px;
-
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-
-            border-radius: 10px;
-        }
-
-        .info-item small {
-            display: block;
-            color: #94a3b8;
-            font-size: 0.75rem;
-            margin-bottom: 3px;
-        }
-
-        .info-item strong {
-            color: #334155;
-            font-size: 0.9rem;
-        }
-
-        /* ==============================
-           SKILLS
-        ============================== */
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px 60px;
-        }
-
-        .skill {
-            margin-bottom: 15px;
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-
-            margin-bottom: 7px;
-
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .skill-header span:last-child {
-            color: #64748b;
-        }
-
-        .skill-bar {
-            height: 7px;
-
-            background: #e2e8f0;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: #2563eb;
-            border-radius: 20px;
-        }
-
-        /* ==============================
-           EXPERIENCE
-        ============================== */
-
-        .experience {
-            background: white;
-        }
-
-        .timeline {
-            border-left: 2px solid #dbeafe;
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-item::before {
-            content: "";
-
-            position: absolute;
-
-            left: -40px;
-            top: 5px;
-
-            width: 17px;
-            height: 17px;
-
-            background: #2563eb;
-            border: 4px solid white;
-
+        .profile-img {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-
-            box-shadow: 0 0 0 2px #dbeafe;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: transform 0.3s ease;
         }
 
-        .timeline-date {
-            color: #2563eb;
-            font-size: 0.8rem;
-            font-weight: 700;
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
-        .timeline-item h3 {
-            margin: 5px 0;
-            color: #0f172a;
+        .profile-section h1 {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            letter-spacing: 1px;
         }
 
-        .timeline-item h4 {
-            color: #64748b;
+        .profile-section p {
+            color: var(--accent);
             font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .contact-list, .skills-list, .tools-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            font-size: 0.85rem;
             margin-bottom: 10px;
-        }
-
-        .timeline-item p {
-            color: #64748b;
-            max-width: 700px;
-        }
-
-        /* ==============================
-           PROJECTS
-        ============================== */
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-        }
-
-        .project-card {
-            padding: 28px;
-
-            background: white;
-            border: 1px solid #e2e8f0;
-
-            border-radius: 14px;
-
-            transition: 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            border-color: #bfdbfe;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-        }
-
-        .project-icon {
-            width: 45px;
-            height: 45px;
-
             display: flex;
             align-items: center;
-            justify-content: center;
-
-            background: #eff6ff;
-            color: #2563eb;
-
-            border-radius: 10px;
-
-            font-size: 1.3rem;
-
-            margin-bottom: 20px;
+            gap: 10px;
+            word-break: break-all;
         }
 
-        .project-card h3 {
-            color: #0f172a;
-            margin-bottom: 10px;
+        .contact-list a {
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .project-card p {
-            color: #64748b;
-            font-size: 0.9rem;
+        .contact-list a:hover {
+            color: var(--accent);
         }
 
         .tags {
             display: flex;
-            gap: 7px;
             flex-wrap: wrap;
-
-            margin-top: 20px;
+            gap: 8px;
         }
 
         .tag {
-            padding: 5px 9px;
-
-            background: #f1f5f9;
-            color: #475569;
-
-            border-radius: 5px;
-
-            font-size: 0.7rem;
-            font-weight: 600;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-glow);
         }
 
-        /* ==============================
-           CONTACT
-        ============================== */
-
-        .contact {
-            background: #0f172a;
-            color: white;
+        .edu-item {
+            margin-bottom: 15px;
+            font-size: 0.85rem;
         }
 
-        .contact .section-header h2 {
-            color: white;
+        .edu-item h4 {
+            color: var(--text-main);
         }
 
-        .contact .section-header p {
-            color: #94a3b8;
+        .edu-item span {
+            color: var(--text-sub);
+            font-size: 0.75rem;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .edu-item ul {
+            padding-left: 15px;
+            margin-top: 5px;
+            color: var(--text-sub);
         }
 
-        .contact-card {
-            padding: 25px;
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
 
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
 
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+        }
+
+        .profile-text {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* --- PROJECT TIMELINE & ANIMATIONS --- */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--border);
+        }
+
+        .project-card {
+            position: relative;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #111827;
             border-radius: 12px;
-
-            transition: 0.3s ease;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-3px);
+        /* Animation class added via Javascript */
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .contact-card small {
-            display: block;
-            color: #94a3b8;
-            margin-bottom: 5px;
+        /* Hover animation for Project Cards */
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px -5px var(--accent-glow);
         }
 
-        .contact-card strong {
+        .project-card::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .project-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .project-type {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
             font-size: 0.9rem;
+            color: var(--text-sub);
         }
 
+        .project-features {
+            margin-top: 10px;
+            padding-left: 18px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 850px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-section">
+                <!-- Replace 'profile.jpg' with your actual image file or path -->
+                <img src="profile.jpg" alt="Emmanuel Deocares" class="profile-img" onerror="this.src='https://via.placeholder.com/140'">
+                <h1>EMMANUEL DEOCARES</h1>
+                <p>Aspiring Data Analyst</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-phone"></i> <span>09924109567</span></li>
+                    <li><i class="fa-solid fa-envelope"></i> <a href="mailto:empe.deocares.up@phinmaed.com">empe.deocares.up@...</a></li>
+                    <li><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/emmandeocares" target="_blank">emmandeocares</a></li>
+                    <li><i class="fa-brands fa-github"></i> <a href="https://github.com/MrHaaaam" target="_blank">MrHaaaam</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Education</h3>
+                <div class="edu-item">
+                    <h4>UDD-OJT</h4>
+                    <span>FEB 28, 2023 - APRIL 4, 2023</span>
+                    <ul>
+                        <li>Computer Configuration</li>
+                        <li>Certificate of Universidad de Dagupan for internship under the IT Professor and Dean</li>
+                    </ul>
+                </div>
+                <div class="edu-item">
+                    <h4>UPANG (BSIT Student)</h4>
+                    <span>NOV 2023 - PRESENT</span>
+                    <ul>
+                        <li>Certificate of Python Seminar for IT Freshmen Students</li>
+                        <li>Hakaton</li>
+                        <li>PowerBI Seminar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Skills</h3>
+                <div class="tags">
+                    <span class="tag">Project Management</span>
+                    <span class="tag">Public Relations</span>
+                    <span class="tag">Teamwork</span>
+                    <span class="tag">Time Management</span>
+                    <span class="tag">Leadership</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Tools</h3>
+                <div class="tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">JS / HTML / CSS</span>
+                    <span class="tag">React</span>
+                    <span class="tag">PHP XAMPP</span>
+                    <span class="tag">PowerBI</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">SQL / NoSQL</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- PROFILE SECTION -->
+            <section class="card">
+                <h2 class="section-title"><i class="fa-solid fa-user"></i> Profile</h2>
+                <p class="profile-text">
+                    I'm an IT student working toward a career in Data Analysis. Through my studies and hands-on projects, I've learned how to take raw information, uncover meaningful patterns, and turn it into clear visual insights. My background in software development gives me a great technical foundation for working with complex data structures, and I'm especially fascinated by AI and how smart algorithms process information. I'm always eager to learn, solve new problems, and help make sense of real-world data!
+                </p>
+            </section>
+
+            <!-- PROJECTS SECTION -->
+            <section class="card">
+                <h2 class="section-title"><i class="fa-solid fa-code-branch"></i> Projects</h2>
+                <div class="timeline">
+
+                    <!-- Project Card 1 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">QuestionPro</div>
+                            <div class="project-date">NOVEMBER 2023</div>
+                        </div>
+                        <div class="project-type">Game / First-Year Project</div>
+                        <p class="project-desc">A team-created, user-friendly Question-and-Answer game focused on general knowledge. It allows users to select their preferred category and provides feedback based on their score.</p>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Botany Hunt and Artist Flair</div>
+                            <div class="project-date">2023 and 2024</div>
+                        </div>
+                        <div class="project-type">Mystery Game & Online Gallery / First-Year Project</div>
+                        <p class="project-desc">An easy team-built Q&A mystery game and online gallery where users pick general knowledge categories and receive feedback based on their performance score.</p>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">QuestionPro (Updated)</div>
+                            <div class="project-date">2024</div>
+                        </div>
+                        <div class="project-type">Game / First-Year Project</div>
+                        <p class="project-desc">A team-created, user-friendly Question-and-Answer game focused on general knowledge with expanded categories and improved feedback interactions.</p>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">HopeBridge</div>
+                            <div class="project-date">2025</div>
+                        </div>
+                        <div class="project-type">Web Application / Second-Year Project</div>
+                        <p class="project-desc">A platform for donating funds, clothes, and essential goods to victims of natural disasters (such as fires and floods).</p>
+                        <ul class="project-features">
+                            <li>Donation Portal</li>
+                            <li>Donation Tracking</li>
+                            <li>Admin Interface</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">ArtSpace</div>
+                            <div class="project-date">2025</div>
+                        </div>
+                        <div class="project-type">Online Gallery Platform / Third-Year Project</div>
+                        <p class="project-desc">A powerful web-based gallery platform built for real-life users, complete with user accounts, email integration, and administration dashboards.</p>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">WorkPulse</div>
+                            <div class="project-date">2025 - 2026</div>
+                        </div>
+                        <div class="project-type">Web-Based Attendance & Workforce Analytics / Capstone Project</div>
+                        <p class="project-desc">An attendance and workforce analytics platform integrated with modern features:</p>
+                        <ul class="project-features">
+                            <li>AI facial recognition and fingerprint for registration and clocking in/out</li>
+                            <li>AI-driven predictive analytics for forecasting absences and managing model accuracy</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scroll & Entrance Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Staggered delay for smooth entrance animation
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => observer.observe(card));
+        });
+    </script>
+</body>
+    </html>
     
-      
