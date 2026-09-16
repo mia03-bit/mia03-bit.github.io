@@ -1,1 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Your Name</title>
 
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .cv {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 30px auto;
+            background: white;
+            padding: 35px 45px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #222;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .header h3 {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 5px 0 10px;
+            color: #555;
+        }
+
+        .contact {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .contact span {
+            margin: 0 8px;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-size: 17px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        .section p {
+            font-size: 13.5px;
+            text-align: justify;
+        }
+
+        /* Education & Experience */
+        .item {
+            margin-bottom: 14px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .item h3 {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .item .date {
+            font-size: 13px;
+            color: #555;
+            white-space: nowrap;
+        }
+
+        .item .institution {
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .item ul {
+            margin: 5px 0 0 18px;
+        }
+
+        .item li {
+            font-size: 13px;
+            margin-bottom: 3px;
+        }
+
+        /* Skills */
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 30px;
+        }
+
+        .skill {
+            font-size: 13px;
+        }
+
+        .skill::before {
+            content: "• ";
+            font-weight: bold;
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .project p {
+            font-size: 13px;
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .cv {
+                width: 100%;
+                min-height: 100vh;
+                margin: 0;
+                padding: 25px 35px;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .cv {
+                width: 95%;
+                margin: 10px auto;
+                padding: 25px;
+            }
+
+            .item-header {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cv">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>Your Name</h1>
+        <h3>BS Information Technology Student</h3>
+
+        <div class="contact">
+            <span>📍 Dagupan City, Pangasinan</span>
+            <span>📞 09XX-XXX-XXXX</span>
+            <span>✉️ your.email@gmail.com</span>
+        </div>
+    </header>
+
+
+    <!-- PROFILE -->
+    <section class="section">
+        <h2 class="section-title">Profile</h2>
+
+        <p>
+            A motivated Information Technology student with knowledge in
+            web development, database management, system development, and
+            data analytics. Interested in gaining practical experience in
+            the IT industry while applying technical and problem-solving
+            skills in a professional environment.
+        </p>
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3>Bachelor of Science in Information Technology</h3>
+                    <div class="institution">
+                        PHINMA–University of Pangasinan
+                    </div>
+                </div>
+
+                <div class="date">
+                    2022 – Present
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3>Senior High School</h3>
+                    <div class="institution">
+                        Your Senior High School
+                    </div>
+                </div>
+
+                <div class="date">
+                    2020 – 2022
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+
+        <div class="skills">
+            <div class="skill">HTML & CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">MongoDB</div>
+            <div class="skill">Python</div>
+            <div class="skill">Rasa</div>
+            <div class="skill">Data Analytics</div>
+            <div class="skill">Database Management</div>
+            <div class="skill">System Development</div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="section">
+        <h2 class="section-title">Academic Projects</h2>
+
+        <div class="project">
+            <h3>RentifyPro – Advanced Vehicle Rental System with AI and Analytics</h3>
+
+            <p>
+                Developed a web-based vehicle rental system that supports
+                vehicle browsing, booking, payment management, AI-assisted
+                vehicle recommendations, and data analytics for rental
+                operations.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>POS and Inventory Management System</h3>
+
+            <p>
+                Designed a system concept for managing sales transactions,
+                inventory records, and business reports to improve
+                operational efficiency.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="item">
+            <div class="item-header">
+                <div>
+                    <h3>Student / Capstone Project Developer</h3>
+                    <div class="institution">
+                        PHINMA–University of Pangasinan
+                    </div>
+                </div>
+
+                <div class="date">
+                    2025 – Present
+                </div>
+            </div>
+
+            <ul>
+                <li>Participated in system analysis and requirements gathering.</li>
+                <li>Worked on web-based system development.</li>
+                <li>Designed user interfaces and system workflows.</li>
+                <li>Worked with databases and system documentation.</li>
+                <li>Conducted system testing and usability evaluation.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- SOFT SKILLS -->
+    <section class="section">
+        <h2 class="section-title">Soft Skills</h2>
+
+        <div class="skills">
+            <div class="skill">Problem Solving</div>
+            <div class="skill">Communication</div>
+            <div class="skill">Teamwork</div>
+            <div class="skill">Time Management</div>
+            <div class="skill">Adaptability</div>
+            <div class="skill">Attention to Detail</div>
+        </div>
+    </section>
+
+
+    <!-- REFERENCES -->
+    <section class="section">
+        <h2 class="section-title">References</h2>
+
+        <p>
+            Available upon request.
+        </p>
+    </section>
+
+</div>
+
+</body>
+</html>
