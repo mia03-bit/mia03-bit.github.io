@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Christine Joy D. Lalata | IT Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+
+            padding: 14px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #888;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #aaa;
+            padding: 8px 14px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* =========================
+           GENERAL
+        ========================== */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .label {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1;
+            margin-bottom: 50px;
+            letter-spacing: -3px;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 110px);
+            line-height: 0.9;
+            letter-spacing: -7px;
+            margin-bottom: 30px;
+        }
+
+        .outline {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+
+        .hero p {
+            color: #999;
+            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 13px 20px;
+            border-radius: 30px;
+            border: 1px solid #333;
+            background: #151515;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: #252525;
+        }
+
+        .btn.primary {
+            background: white;
+            color: black;
+            font-weight: bold;
+        }
+
+        .btn.primary:hover {
+            background: #ddd;
+        }
+
+        /* =========================
+           PROFILE PHOTO
+        ========================== */
+
+        .photo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .photo-container::before {
+            content: "";
+            position: absolute;
+            inset: -20px;
+
+            border: 1px solid #444;
+            border-radius: 50%;
+
+            animation: rotate 15s linear infinite;
+        }
+
+        .photo-container::after {
+            content: "";
+            position: absolute;
+            inset: -40px;
+
+            border: 1px dashed #333;
+            border-radius: 50%;
+
+            animation: rotateReverse 20s linear infinite;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center top;
+
+            border-radius: 50%;
+            border: 6px solid #181818;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateReverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #252525;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .card p {
+            color: #aaa;
+        }
+
+        .info {
+            display: grid;
+            gap: 25px;
+        }
+
+        .info small {
+            display: block;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project {
+            position: relative;
+
+            min-height: 350px;
+            padding: 30px;
+
+            background:
+                radial-gradient(
+                    circle at var(--mouse-x, 80%) var(--mouse-y, 10%),
+                    rgba(255,255,255,0.13),
+                    transparent 35%
+                ),
+                #111;
+
+            border: 1px solid #252525;
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.4s ease,
+                border 0.3s ease;
+        }
+
+        /* PROJECT HOVER ANIMATION */
+
+        .project:hover {
+            transform:
+                translateY(-12px)
+                rotateX(2deg)
+                rotateY(-2deg);
+
+            border-color: #555;
+        }
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+            height: 200px;
+
+            right: -100px;
+            bottom: -100px;
+
+            border: 1px solid #333;
+            border-radius: 50%;
+
+            transition: 0.6s;
+        }
+
+        .project:hover::before {
+            transform: scale(2);
+        }
+
+        .project-number {
+            color: #666;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .project-year {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+
+            color: #777;
+            font-size: 13px;
+        }
+
+        .project h3 {
+            margin-top: 50px;
+            font-size: 26px;
+            line-height: 1.1;
+        }
+
+        .project p {
+            margin-top: 18px;
+            color: #999;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+
+            margin-top: 25px;
+        }
+
+        .tag {
+            padding: 5px 10px;
+
+            border: 1px solid #333;
+            border-radius: 20px;
+
+            color: #aaa;
+            font-size: 11px;
+        }
+
+        .arrow {
+            position: absolute;
+            bottom: 25px;
+            right: 30px;
+
+            font-size: 20px;
+
+            opacity: 0.4;
+
+            transition: 0.3s;
+        }
+
+        .project:hover .arrow {
+            opacity: 1;
+            transform: translateX(8px);
+        }
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-box {
+            background: #111;
+            border: 1px solid #252525;
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .skill-box h3 {
+            margin-bottom: 25px;
+        }
+
+        .skill {
+            margin: 20px 0;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+
+        .bar {
+            height: 5px;
+            background: #292929;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 0;
+
+            background: white;
+
+            transition: width 1.5s ease;
+        }
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .timeline {
+            border-left: 1px solid #333;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 40px 30px;
+        }
+
+        .timeline-item::before {
+            content: "";
+
+            position: absolute;
+
+            left: -5px;
+            top: 5px;
+
+            width: 9px;
+            height: 9px;
+
+            background: white;
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            font-size: 20px;
+        }
+
+        .timeline-item p {
+            color: #999;
+        }
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            text-align: center;
+
+            padding: 90px 30px;
+
+            background: #111;
+            border: 1px solid #252525;
+            border-radius: 30px;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 7vw, 80px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .contact .buttons {
+            justify-content: center;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            color: #555;
+            padding: 40px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           SCROLL ANIMATION
+        ========================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            nav {
+                width: 94%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .photo-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .project {
+                min-height: 380px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <a href="#home" class="logo">
+            CJ<span>.LALATA</span>
+        </a>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section id="home">
+
+        <div class="container hero">
+
+            <div class="reveal">
+
+                <div class="label">
+                    Information Technology • Business Informatics
+                </div>
+
+                <h1>
+                    Christine Joy
+                    <br>
+                    <span class="outline">D. Lalata</span>
+                </h1>
+
+                <p>
+                    I am a junior Information Technology student majoring in
+                    Business Informatics at PHINMA–University of Pangasinan.
+                    I am passionate about technology, teamwork, project
+                    management, and creating useful digital experiences.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="#projects" class="btn primary">
+                        View My Projects ↓
+                    </a>
+
+                    <a href="mailto:christinelalata8@gmail.com" class="btn">
+                        Email Me ↗
+                    </a>
+
+                    <a
+                        href="https://github.com/lalatchristine"
+                        target="_blank"
+                        class="btn"
+                    >
+                        GitHub ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="photo-container reveal delay-2">
+
+                <img
+                    src="profile.jpg"
+                    alt="Christine Joy D. Lalata"
+                    class="profile-photo"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="label reveal">
+                01 / About
+            </div>
+
+            <h2 class="section-title reveal">
+                A student who builds,
+                <br>
+                learns, and adapts.
+            </h2>
+
+
+            <div class="about-grid">
+
+                <div class="card reveal">
+
+                    <p>
+                        I am a junior Information Technology student majoring
+                        in Business Informatics at PHINMA–University of
+                        Pangasinan. I excel in communication, teamwork, and
+                        adaptability, enabling me to collaborate effectively
+                        and perform well under pressure.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I am committed to continuous growth and contributing
+                        meaningfully in both academic and professional
+                        settings.
+                    </p>
+
+                </div>
+
+
+                <div class="card info reveal delay-1">
+
+                    <div>
+
+                        <small>Location</small>
+
+                        <strong>
+                            Beyeng-Angio, San Fabian, Pangasinan
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>Phone</small>
+
+                        <strong>
+                            09244006200
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>Email</small>
+
+                        <strong>
+                            christinelalata8@gmail.com
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>GitHub</small>
+
+                        <a
+                            href="https://github.com/lalatchristine"
+                            target="_blank"
+                        >
+                            github.com/lalatchristine ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="label reveal">
+                02 / Selected Work
+            </div>
+
+            <h2 class="section-title reveal">
+                Projects that tell
+                <br>
+                my story.
+            </h2>
+
+
+            <div class="projects">
+
+
+                <!-- PROJECT 1 -->
+
+                <div class="project reveal">
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <span class="project-year">
+                        2023 — 2024
+                    </span>
+
+                    <h3>
+                        Language Voyages
+                    </h3>
+
+                    <p>
+                        Language Voyages is an innovative platform designed
+                        to facilitate language learning through immersive
+                        experiences.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Java
+                        </span>
+
+                        <span class="tag">
+                            First Year
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- PROJECT 2 -->
+
+                <div class="project reveal delay-1">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <span class="project-year">
+                        2024 — 2025
+                    </span>
+
+                    <h3>
+                        Hotel Reservation System
+                    </h3>
+
+                    <p>
+                        A digital platform that simplifies hotel booking by
+                        allowing users to check availability, view details,
+                        and manage reservations online.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Kotlin
+                        </span>
+
+                        <span class="tag">
+                            PHP
+                        </span>
+
+                        <span class="tag">
+                            Second Year
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- PROJECT 3 -->
+
+                <div class="project reveal">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <span class="project-year">
+                        2024 — 2025
+                    </span>
+
+                    <h3>
+                        Brewhive: Coffee App
+                    </h3>
+
+                    <p>
+                        A mobile and web-based coffee ordering and community
+                        platform designed to enhance the café experience
+                        through seamless ordering, personalized recommendations,
+                        and a social hub for coffee lovers.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                        <span class="tag">
+                            CSS
+                        </span>
+
+                        <span class="tag">
+                            Kotlin
+                        </span>
+
+                        <span class="tag">
+                            PHP
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- PROJECT 4 -->
+
+                <div class="project reveal delay-1">
+
+                    <span class="project-number">
+                        04
+                    </span>
+
+                    <span class="project-year">
+                        2024 — 2025
+                    </span>
+
+                    <h3>
+                        InternConnect
+                    </h3>
+
+                    <p>
+                        A web-based platform designed to bridge the gap
+                        between students and employers. It helps students
+                        discover internships, part-time jobs, and training
+                        opportunities while allowing companies to reach
+                        suitable candidates.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Java
+                        </span>
+
+                        <span class="tag">
+                            HTML
+                        </span>
+
+                        <span class="tag">
+                            Third Year
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- PROJECT 5 -->
+
+                <div class="project reveal">
+
+                    <span class="project-number">
+                        05
+                    </span>
+
+                    <span class="project-year">
+                        2024 — 2025
+                    </span>
+
+                    <h3>
+                        School Information Management
+                        System with AI Assistant
+                    </h3>
+
+                    <p>
+                        A digital platform designed to provide easy access
+                        to school information such as schedules,
+                        announcements, and policies. It features an AI
+                        assistant that delivers quick and accurate responses,
+                        improving communication and reducing administrative
+                        workload.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            TypeScript
+                        </span>
+
+                        <span class="tag">
+                            JavaScript
+                        </span>
+
+                        <span class="tag">
+                            Python
+                        </span>
+
+                        <span class="tag">
+                            Solidity
+                        </span>
+
+                        <span class="tag">
+                            Capstone
+                        </span>
+
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="label reveal">
+                03 / Skills
+            </div>
+
+            <h2 class="section-title reveal">
+                What I bring
+                <br>
+                to a team.
+            </h2>
+
+
+            <div class="skills">
+
+
+                <div class="skill-box reveal">
+
+                    <h3>
+                        Professional Skills
+                    </h3>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Communication</span>
+                            <span>90%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="90%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Teamwork</span>
+                            <span>90%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="90%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Leadership</span>
+                            <span>80%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="80%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Critical Thinking</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="85%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-box reveal delay-1">
+
+                    <h3>
+                        Technical Skills
+                    </h3>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Project Management</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="85%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>UI/UX Design</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="85%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Web Development</span>
+                            <span>75%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="75%"></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill">
+
+                        <div class="skill-name">
+                            <span>Problem Solving</span>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="bar">
+                            <span data-width="85%"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section id="education">
+
+        <div class="container">
+
+            <div class="label reveal">
+                04 / Education
+            </div>
+
+            <h2 class="section-title reveal">
+                My academic
+                <br>
+                journey.
+            </h2>
+
+
+            <div class="timeline">
+
+
+                <div class="timeline-item reveal">
+
+                    <div class="timeline-date">
+                        2023 — PRESENT
+                    </div>
+
+                    <h3>
+                        PHINMA–University of Pangasinan
+                    </h3>
+
+                    <p>
+                        Bachelor of Science in Information Technology
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item reveal delay-1">
+
+                    <div class="timeline-date">
+                        2021 — 2023
+                    </div>
+
+                    <h3>
+                        Binday National High School
+                    </h3>
+
+                    <p>
+                        Senior High School
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item reveal delay-2">
+
+                    <div class="timeline-date">
+                        2016 — 2020
+                    </div>
+
+                    <h3>
+                        Binday National High School
+                    </h3>
+
+                    <p>
+                        Junior High School
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item reveal delay-3">
+
+                    <div class="timeline-date">
+                        2012 — 2016
+                    </div>
+
+                    <h3>
+                        Aramal Elementary School
+                    </h3>
+
+                    <p>
+                        Primary Education
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact reveal">
+
+                <div class="label">
+                    05 / Contact
+                </div>
+
+                <h2>
+                    Let's build
+                    <br>
+                    something together.
+                </h2>
+
+                <p>
+                    Have an opportunity, project, or internship in mind?
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        href="mailto:christinelalata8@gmail.com"
+                        class="btn primary"
+                    >
+                        christinelalata8@gmail.com ↗
+                    </a>
+
+                    <a
+                        href="https://github.com/lalatchristine"
+                        target="_blank"
+                        class="btn"
+                    >
+                        GitHub ↗
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        © 2026 Christine Joy D. Lalata
+        · Information Technology
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+        ========================================
+        SCROLL REVEAL ANIMATION
+        ========================================
+        */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(
+
+                        (entry) => {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target.classList.add("show");
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+
+                    );
+
+                },
+
+                {
+                    threshold: 0.15
+                }
+
+            );
+
+
+        revealElements.forEach(
+
+            (element) => {
+
+                observer.observe(element);
+
+            }
+
+        );
+
+
+        /*
+        ========================================
+        SKILL BAR ANIMATION
+        ========================================
+        */
+
+        const skillBoxes =
+            document.querySelectorAll(".skill-box");
+
+
+        const skillObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach(
+
+                        (entry) => {
+
+                            if (entry.isIntersecting) {
+
+                                const bars =
+                                    entry.target.querySelectorAll(
+                                        ".bar span"
+                                    );
+
+
+                                bars.forEach(
+
+                                    (bar) => {
+
+                                        bar.style.width =
+                                            bar.dataset.width;
+
+                                    }
+
+                                );
+
+
+                                skillObserver.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+
+                    );
+
+                },
+
+                {
+                    threshold: 0.3
+                }
+
+            );
+
+
+        skillBoxes.forEach(
+
+            (box) => {
+
+                skillObserver.observe(box);
+
+            }
+
+        );
+
+
+        /*
+        ========================================
+        PROJECT MOUSE SPOTLIGHT
+        ========================================
+        */
+
+        const projects =
+            document.querySelectorAll(".project");
+
+
+        projects.forEach(
+
+            (project) => {
+
+                project.addEventListener(
+                    "mousemove",
+                    function(event) {
+
+                        const rect =
+                            project.getBoundingClientRect();
+
+
+                        const x =
+                            ((event.clientX - rect.left)
+                            / rect.width) * 100;
+
+
+                        const y =
+                            ((event.clientY - rect.top)
+                            / rect.height) * 100;
+
+
+                        project.style.setProperty(
+                            "--mouse-x",
+                            x + "%"
+                        );
+
+
+                        project.style.setProperty(
+                            "--mouse-y",
+                            y + "%"
+                        );
+
+                    }
+                );
+
+
+                project.addEventListener(
+                    "mouseleave",
+                    function() {
+
+                        project.style.setProperty(
+                            "--mouse-x",
+                            "80%"
+                        );
+
+
+                        project.style.setProperty(
+                            "--mouse-y",
+                            "10%"
+                        );
+
+                    }
+                );
+
+            }
+
+        );
+
+    </script>
+
+</body>
+</html>
