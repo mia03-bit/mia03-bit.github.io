@@ -1,22 +1,247 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ITE380 Machine Problem</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Here's our CVs</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe6f1, #f3e8ff, #e5f4ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Floating circles */
+
+        .circle {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.45;
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle1 {
+            width: 200px;
+            height: 200px;
+            background: #ffb6d5;
+            top: -60px;
+            left: -50px;
+        }
+
+        .circle2 {
+            width: 250px;
+            height: 250px;
+            background: #d8c2ff;
+            bottom: -80px;
+            right: -70px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Main container */
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(120, 80, 120, 0.15);
+            position: relative;
+            z-index: 2;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #493a50;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #8b748e;
+            margin-bottom: 35px;
+            font-size: 15px;
+        }
+
+        /* CV cards */
+
+        .cv-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .cv-card {
+            text-decoration: none;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            color: #4b3c4e;
+            font-weight: bold;
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 25px rgba(130, 90, 130, 0.08);
+        }
+
+        .cv-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #f1a8c9;
+            box-shadow: 0 15px 35px rgba(210, 110, 160, 0.2);
+            color: #c85f91;
+        }
+
+        .cv-icon {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .cv-name {
+            display: block;
+            font-size: 17px;
+        }
+
+        .cv-text {
+            display: block;
+            font-size: 11px;
+            color: #a18c9f;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        /* Footer */
+
+        .footer {
+            margin-top: 35px;
+            color: #9a8497;
+            font-size: 12px;
+        }
+
+        .heart {
+            color: #e77ca9;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 35px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .cv-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Machine Problem ITE380</h1>
+    <!-- Background decorations -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
 
-    <a href="Deocares.html">Deocares CV</a>
-    <br>
-    <a href="figueroa.html">figueroa CV</a>
-    <br>
-    <a href="Vidal.html">Vidal CV</a>
-    <br>
-    <a href="delacruz.html">delacruz CV</a>
-    <br>
-    <a href="lalata.html">lalata CV</a>
+    <div class="container">
+
+        <div class="icon">📂</div>
+
+        <h1>Machine Problem ITE380</h1>
+
+        <p class="subtitle">
+            Welcome! Choose a CV below to view our individual resume.
+        </p>
+
+        <div class="cv-list">
+
+            <a href="Deocares.html" class="cv-card">
+                <span class="cv-icon">💼</span>
+                <span class="cv-name">Deocares CV</span>
+                <span class="cv-text">View Resume →</span>
+            </a>
+
+            <a href="figueroa.html" class="cv-card">
+                <span class="cv-icon">✨</span>
+                <span class="cv-name">Figueroa CV</span>
+                <span class="cv-text">View Resume →</span>
+            </a>
+
+            <a href="Vidal.html" class="cv-card">
+                <span class="cv-icon">🌸</span>
+                <span class="cv-name">Vidal CV</span>
+                <span class="cv-text">View Resume →</span>
+            </a>
+
+            <a href="delacruz.html" class="cv-card">
+                <span class="cv-icon">🎀</span>
+                <span class="cv-name">Dela Cruz CV</span>
+                <span class="cv-text">View Resume →</span>
+            </a>
+
+            <a href="lalata.html" class="cv-card">
+                <span class="cv-icon">🌷</span>
+                <span class="cv-name">Lalata CV</span>
+                <span class="cv-text">View Resume →</span>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            ITE380 • Machine Problem
+            <br>
+            Made with <span class="heart">♥</span>
+        </div>
+
+    </div>
 
 </body>
 </html>
