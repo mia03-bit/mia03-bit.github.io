@@ -460,7 +460,7 @@
 
 <body>
 
-    <!-- NAVIGATION -->
+
 
     <nav>
         <div class="logo">KC.</div>
@@ -475,23 +475,10 @@
     </nav>
 
 
-    <!-- HERO -->
 
     <section class="hero" id="home">
 
         <div class="hero-content reveal">
-
-            <!--
-                PROFILE PICTURE
-
-                PUT YOUR PICTURE IN THE SAME FOLDER AS index.html
-
-                Example:
-                index.html
-                profile.jpg
-
-                Then change the filename below if needed.
-            -->
 
             <div class="profile-pic">
                 <img src="profile.jpg" alt="Kasten-Cara Dela Cruz">
