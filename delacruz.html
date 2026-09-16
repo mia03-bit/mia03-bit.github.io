@@ -1,178 +1,1106 @@
-```html
-<!-- =========================
-     PROJECTS
-========================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<section id="projects">
+    <title>Kasten-Cara Dela Cruz | Information Technology Student</title>
 
-    <div class="section-title reveal">
-        <p>04 / Projects</p>
-        <h2>Selected Projects</h2>
-    </div>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-    <div class="projects-grid">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            background: #00e6b8;
+            filter: blur(180px);
+            opacity: 0.08;
+            top: -150px;
+            left: -150px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: #00e6b8;
+            filter: blur(180px);
+            opacity: 0.06;
+            right: -150px;
+            bottom: -100px;
+            z-index: -1;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00e6b8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00e6b8;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #00e6b8;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 130px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        /* PROFILE PICTURE */
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #00e6b8;
+            box-shadow: 0 0 35px rgba(0, 230, 184, 0.25);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .small-text {
+            color: #00e6b8;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 105px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+            letter-spacing: -4px;
+        }
+
+        .hero h1 span {
+            color: #00e6b8;
+        }
+
+        .typing {
+            font-size: 22px;
+            color: #aaaaaa;
+            margin-bottom: 35px;
+        }
+
+        .cursor {
+            color: #00e6b8;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: auto;
+            color: #999999;
+            font-size: 16px;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: 1px solid #00e6b8;
+            color: #00e6b8;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #00e6b8;
+            color: #080808;
+            transform: translateY(-3px);
+        }
+
+        .btn-filled {
+            background: #00e6b8;
+            color: #080808;
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .glass-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,230,184,0.4);
+        }
+
+        .glass-card h3 {
+            color: #00e6b8;
+            margin-bottom: 15px;
+        }
+
+        .glass-card p {
+            color: #aaaaaa;
+            font-size: 15px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            padding: 8px 14px;
+            border: 1px solid rgba(0,230,184,0.4);
+            border-radius: 20px;
+            color: #00e6b8;
+            font-size: 13px;
+        }
+
+        /* EDUCATION */
+
+        .timeline {
+            position: relative;
+            margin-left: 20px;
+            border-left: 2px solid #00e6b8;
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #00e6b8;
+            border-radius: 50%;
+            left: -37px;
+            top: 5px;
+            box-shadow: 0 0 15px #00e6b8;
+        }
+
+        .timeline-item h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item span {
+            color: #00e6b8;
+            font-size: 13px;
+        }
+
+        .timeline-item p {
+            color: #999999;
+            margin-top: 8px;
+        }
+
+        /* PROJECTS */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #00e6b8;
+        }
+
+        .project-number {
+            color: #00e6b8;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #999999;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
+            background: rgba(0,230,184,0.1);
+            color: #00e6b8;
+            font-size: 12px;
+        }
+
+        /* EXPERIENCE */
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            text-align: center;
+            padding: 60px 30px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 25px;
+        }
+
+        .contact-box h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: #999999;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-info span {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666666;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ANIMATION */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 11px;
+            }
+
+            section {
+                padding: 90px 5%;
+            }
+
+            .about-grid,
+            .projects-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+                letter-spacing: -2px;
+            }
+
+            .profile-pic {
+                width: 130px;
+                height: 130px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">KC.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
 
-        <!-- 1ST YEAR - 1ST SEM -->
+    <!-- HERO -->
 
-        <div class="project-card reveal">
+    <section class="hero" id="home">
 
-            <div class="project-number">
-                01 / FIRST YEAR — FIRST SEMESTER
+        <div class="hero-content reveal">
+
+            <!--
+                PROFILE PICTURE
+
+                PUT YOUR PICTURE IN THE SAME FOLDER AS index.html
+
+                Example:
+                index.html
+                profile.jpg
+
+                Then change the filename below if needed.
+            -->
+
+            <div class="profile-pic">
+                <img src="profile.jpg" alt="Kasten-Cara Dela Cruz">
             </div>
 
-            <h3>Snake Trial</h3>
+            <p class="small-text">Portfolio / Curriculum Vitae</p>
 
-            <p>
-                A simple Snake Game developed using Python,
-                applying fundamental programming concepts such as
-                loops, conditions, functions, and user input.
+            <h1>
+                Kasten-Cara<br>
+                <span>Dela Cruz</span>
+            </h1>
+
+            <div class="typing">
+                <span id="typingText"></span>
+                <span class="cursor">|</span>
+            </div>
+
+            <p class="hero-description">
+                An Information Technology student interested in
+                UI/UX Design, Web Development, and Networking.
+                Passionate about learning new technologies and
+                creating meaningful digital experiences.
             </p>
 
-            <span class="project-tag">Python</span>
+            <div class="buttons">
+                <a href="https://github.com/kasten-cara" target="_blank" class="btn btn-filled">
+                    GitHub
+                </a>
+
+                <a href="https://www.linkedin.com/in/kc-dela-cruz-5b131a2a1"
+                   target="_blank"
+                   class="btn">
+                    LinkedIn
+                </a>
+            </div>
 
         </div>
 
+    </section>
 
-        <!-- 1ST YEAR - 2ND SEM -->
 
-        <div class="project-card reveal">
+    <!-- ABOUT -->
 
-            <div class="project-number">
-                02 / FIRST YEAR — SECOND SEMESTER
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                About <span>Me</span>
+            </h2>
+
+            <div class="about-grid">
+
+                <div class="glass-card reveal">
+
+                    <h3>Profile</h3>
+
+                    <p>
+                        I am an Information Technology student with
+                        a strong foundation in different IT concepts
+                        and technologies. I am eager to apply my
+                        knowledge to real-world situations while
+                        continuously learning and improving my skills.
+                    </p>
+
+                </div>
+
+
+                <div class="glass-card reveal">
+
+                    <h3>Technical Skills</h3>
+
+                    <div class="skills">
+
+                        <span class="skill">Python</span>
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">PHP</span>
+                        <span class="skill">Figma</span>
+                        <span class="skill">Networking</span>
+                        <span class="skill">Microsoft Office</span>
+                        <span class="skill">UI/UX Design</span>
+                        <span class="skill">Project Management</span>
+                        <span class="skill">Problem Solving</span>
+                        <span class="skill">Teamwork</span>
+                        <span class="skill">Communication</span>
+
+                    </div>
+
+                </div>
+
             </div>
-
-            <h3>WinkCo.</h3>
-
-            <p>
-                A web-based entertainment platform providing news,
-                scandals, and insights about a wide range of artists,
-                with an emphasis on accessible and organized content.
-            </p>
-
-            <span class="project-tag">Web Development</span>
 
         </div>
 
+    </section>
 
-        <!-- 2ND YEAR - 1ST SEM -->
 
-        <div class="project-card reveal">
+    <!-- EDUCATION -->
 
-            <div class="project-number">
-                03 / SECOND YEAR — FIRST SEMESTER
+    <section id="education">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                Edu<span>cation</span>
+            </h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item reveal">
+
+                    <span>July 2023 – Present</span>
+
+                    <h3>
+                        PHINMA University of Pangasinan
+                    </h3>
+
+                    <p>
+                        Bachelor of Science in Information Technology
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item reveal">
+
+                    <span>2021 – 2023</span>
+
+                    <h3>
+                        Dasol Catholic School
+                    </h3>
+
+                    <p>
+                        Senior High School – HUMSS
+                        <br>
+                        With Honor
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item reveal">
+
+                    <span>2017 – 2021</span>
+
+                    <h3>
+                        Dasol Catholic School &
+                        Malimpin National High School
+                    </h3>
+
+                    <p>
+                        Junior High School
+                        <br>
+                        With Honor
+                    </p>
+
+                </div>
+
             </div>
-
-            <h3>GeoGuessr</h3>
-
-            <p>
-                An educational geography game designed to help users
-                identify locations and improve their knowledge of
-                different places around the world.
-            </p>
-
-            <span class="project-tag">Educational Game</span>
 
         </div>
 
+    </section>
 
-        <!-- 2ND YEAR - 2ND SEM -->
 
-        <div class="project-card reveal">
+    <!-- PROJECTS -->
 
-            <div class="project-number">
-                04 / SECOND YEAR — SECOND SEMESTER
+    <section id="projects">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                My <span>Projects</span>
+            </h2>
+
+            <div class="projects-grid">
+
+
+                <!-- 01 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        01 / FIRST YEAR — FIRST SEMESTER
+                    </div>
+
+                    <h3>
+                        Snake Trial
+                    </h3>
+
+                    <p>
+                        A simple Snake Game developed using Python.
+                        The project applied loops, conditions,
+                        functions, and user input.
+                    </p>
+
+                    <span class="project-tag">
+                        Python / Game Development
+                    </span>
+
+                </div>
+
+
+                <!-- 02 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        02 / FIRST YEAR — SECOND SEMESTER
+                    </div>
+
+                    <h3>
+                        WinkCo.
+                    </h3>
+
+                    <p>
+                        A web platform focused on artist news,
+                        scandals, and insights. The project
+                        explored web development and content
+                        presentation.
+                    </p>
+
+                    <span class="project-tag">
+                        Web Development
+                    </span>
+
+                </div>
+
+
+                <!-- 03 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        03 / SECOND YEAR — FIRST SEMESTER
+                    </div>
+
+                    <h3>
+                        GeoGuessr
+                    </h3>
+
+                    <p>
+                        A geography educational game designed
+                        to make learning about different places
+                        more interactive and engaging.
+                    </p>
+
+                    <span class="project-tag">
+                        Educational Game
+                    </span>
+
+                </div>
+
+
+                <!-- 04 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        04 / SECOND YEAR — SECOND SEMESTER
+                    </div>
+
+                    <h3>
+                        Lost Shadows: Silent Revenge
+                    </h3>
+
+                    <p>
+                        A 2D horror-mystery platformer featuring
+                        lockpicking, color matching, and jigsaw
+                        challenges. Development was discontinued
+                        due to changes in the project team.
+                    </p>
+
+                    <span class="project-tag">
+                        Unity / Game Development
+                    </span>
+
+                </div>
+
+
+                <!-- 05 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        05 / THIRD YEAR — FIRST SEMESTER
+                    </div>
+
+                    <h3>
+                        Collector's Cove
+                    </h3>
+
+                    <p>
+                        A commerce platform designed for collectors,
+                        traders, and beginners. It includes
+                        timed auctions and bidding features
+                        for rare collectibles.
+                    </p>
+
+                    <span class="project-tag">
+                        UI/UX / Web & App Development
+                    </span>
+
+                </div>
+
+
+                <!-- 06 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        06 / THIRD YEAR — SECOND SEMESTER
+                    </div>
+
+                    <h3>
+                        Kenny Rogers Branch Risk Analysis
+                    </h3>
+
+                    <p>
+                        A branch-level risk analysis project for
+                        a Kenny Rogers branch at SM Mall Dagupan City.
+                        The project focused on identifying threats,
+                        vulnerabilities, and operational risks,
+                        followed by risk assessment and proposed
+                        management measures.
+                    </p>
+
+                    <span class="project-tag">
+                        Risk Analysis / Information Security
+                    </span>
+
+                </div>
+
+
+                <!-- 07 -->
+
+                <div class="project-card reveal">
+
+                    <div class="project-number">
+                        07 / FOURTH YEAR — FIRST SEMESTER
+                    </div>
+
+                    <h3>
+                        CommunityPulse+
+                    </h3>
+
+                    <p>
+                        A web-based Smart Barangay Issue & Incident
+                        Management System designed to make it easier
+                        for residents to report community issues and
+                        incidents while helping barangay personnel
+                        manage, track, and update reports.
+                    </p>
+
+                    <span class="project-tag">
+                        UI/UX / Web Development
+                    </span>
+
+                </div>
+
             </div>
-
-            <h3>Lost Shadows: Silent Revenge</h3>
-
-            <p>
-                A 2D horror-mystery platformer featuring interactive
-                puzzles and gameplay mechanics such as lockpicking,
-                color matching, and jigsaw challenges. Development was
-                discontinued due to changes in the project team.
-            </p>
-
-            <span class="project-tag">
-                Unity / Game Development
-            </span>
 
         </div>
 
+    </section>
 
-        <!-- 3RD YEAR - 1ST SEM -->
 
-        <div class="project-card reveal">
+    <!-- EXPERIENCE -->
 
-            <div class="project-number">
-                05 / THIRD YEAR — FIRST SEMESTER
+    <section id="experience">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                Work <span>Experience</span>
+            </h2>
+
+            <div class="experience-grid">
+
+
+                <div class="glass-card reveal">
+
+                    <h3>
+                        Work Immersion – OJT
+                    </h3>
+
+                    <p>
+                        Dasol Catholic School
+                    </p>
+
+                    <p>
+                        December 10 – 24
+                    </p>
+
+                </div>
+
+
+                <div class="glass-card reveal">
+
+                    <h3>
+                        HK Scholarship Duty
+                    </h3>
+
+                    <p>
+                        PHINMA University of Pangasinan
+                    </p>
+
+                    <p>
+                        Second Year
+                    </p>
+
+                </div>
+
+
             </div>
-
-            <h3>Collector's Cove</h3>
-
-            <p>
-                A commerce and bidding platform designed for collectors
-                and traders of rare collectibles. It features timed
-                auctions, bidding, and transaction-related functions.
-            </p>
-
-            <span class="project-tag">
-                UI/UX / Web & App Development
-            </span>
 
         </div>
 
+    </section>
 
-        <!-- 3RD YEAR - 2ND SEM -->
 
-        <div class="project-card reveal">
+    <!-- CERTIFICATION -->
 
-            <div class="project-number">
-                06 / THIRD YEAR — SECOND SEMESTER
+    <section>
+
+        <div class="container">
+
+            <h2 class="section-title reveal">
+                Certifi<span>cation</span>
+            </h2>
+
+            <div class="glass-card reveal">
+
+                <h3>
+                    Certificate of Participation
+                </h3>
+
+                <p>
+                    "Phytonic Alchemy: Brewing Magic in Code for Freshmen"
+                </p>
+
             </div>
-
-            <h3>Kenny Rogers Branch Risk Analysis</h3>
-
-            <p>
-                A branch-level risk analysis project for a Kenny Rogers
-                branch at SM Mall Dagupan City. The project focused on
-                identifying threats, vulnerabilities, and operational
-                risks affecting the branch and its systems, followed by
-                risk assessment and proposed management measures.
-            </p>
-
-            <span class="project-tag">
-                Risk Analysis
-            </span>
 
         </div>
 
+    </section>
 
-        <!-- 4TH YEAR - 1ST SEM -->
 
-        <div class="project-card reveal">
+    <!-- CONTACT -->
 
-            <div class="project-number">
-                07 / FOURTH YEAR — FIRST SEMESTER
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact-box reveal">
+
+                <h2>
+                    Let's <span style="color:#00e6b8;">Connect.</span>
+                </h2>
+
+                <p>
+                    Feel free to reach out for opportunities,
+                    collaborations, or simply to connect.
+                </p>
+
+                <div class="contact-info">
+
+                    <span>
+                        📧 delacruzkasten@gmail.com
+                    </span>
+
+                    <span>
+                        📱 +63 963 993 4449
+                    </span>
+
+                    <span>
+                        📍 Malimpin, Dasol, Pangasinan
+                    </span>
+
+                </div>
+
+                <div class="buttons">
+
+                    <a href="mailto:delacruzkasten@gmail.com"
+                       class="btn btn-filled">
+                        Email Me
+                    </a>
+
+                    <a href="https://github.com/kasten-cara"
+                       target="_blank"
+                       class="btn">
+                        GitHub
+                    </a>
+
+                </div>
+
             </div>
-
-            <h3>CommunityPulse+</h3>
-
-            <p>
-                A web-based Smart Barangay Issue & Incident Management
-                System that allows residents to report community issues
-                and incidents while helping barangay personnel manage,
-                track, and update submitted reports.
-            </p>
-
-            <span class="project-tag">
-                Barangay Digital Governance
-            </span>
 
         </div>
 
+    </section>
 
-    </div>
 
-</section>
-```
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Kasten-Cara Dela Cruz. All Rights Reserved.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* TYPING EFFECT */
+
+        const typingText = document.getElementById("typingText");
+
+        const words = [
+            "Information Technology Student",
+            "UI/UX Designer",
+            "Web Developer",
+            "Future IT Professional"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typeEffect() {
+
+            const currentWord = words[wordIndex];
+
+            if (!deleting) {
+
+                typingText.textContent =
+                    currentWord.substring(0, charIndex + 1);
+
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1500);
+
+                    return;
+                }
+
+            } else {
+
+                typingText.textContent =
+                    currentWord.substring(0, charIndex - 1);
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex++;
+
+                    if (wordIndex === words.length) {
+                        wordIndex = 0;
+                    }
+
+                }
+
+            }
+
+            setTimeout(typeEffect, deleting ? 50 : 100);
+        }
+
+        typeEffect();
+
+
+        /* SCROLL REVEAL */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            revealElements.forEach(element => {
+
+                const windowHeight =
+                    window.innerHeight;
+
+                const elementTop =
+                    element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add("active");
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            revealOnScroll
+        );
+
+        revealOnScroll();
+
+    </script>
+
+</body>
+</html>
