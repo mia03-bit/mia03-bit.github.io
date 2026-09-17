@@ -241,7 +241,7 @@
     /* Contact information */
     .contact-strip{
       display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
+      grid-template-columns:minmax(0,1.65fr) minmax(0,1fr) minmax(0,1.15fr) minmax(0,.85fr);
       gap:0;
       margin:0 0 23px;
       padding:11px 10px;
@@ -291,11 +291,19 @@
     .contact-value{
       display:block;
       color:var(--silver-2);
-      font-size:10px;
+      font-size:10.5px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .contact-item:first-child .contact-value{
       white-space:normal;
       overflow:visible;
+      text-overflow:clip;
       overflow-wrap:anywhere;
+      line-height:1.35;
     }
+
     /* Technical skills */
     .skills-title-row{
       display:flex;
@@ -805,6 +813,7 @@
         padding:1.4mm 1.6mm 1.3mm;
         border-left:.22mm solid #e0e0e0;
       }
+      .p-contact-item:first-child{flex:1.6}
       .p-contact-item:first-child{border-left:none}
       .p-contact-label{
         display:block;
@@ -818,11 +827,17 @@
       }
       .p-contact-value{
         display:block;
-        font-size:5.8pt;
-        line-height:1.2;
+        font-size:6.2pt;
+        line-height:1.25;
         color:#222;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      .p-contact-item:first-child .p-contact-value{
         white-space:normal;
         overflow:visible;
+        text-overflow:clip;
         overflow-wrap:anywhere;
       }
       .p-photo{
@@ -1013,9 +1028,7 @@
             <img id="profilePhoto" src="profile.jpg" alt="Profile photo" />
             <div class="photo-placeholder">
               <div class="photo-icon"></div>
-              Photo Holder<br />Add Image Later
             </div>
-            <div class="photo-tag">Photo</div>
           </div>
         </div>
       </div>
@@ -1154,7 +1167,7 @@
 
       <div class="p-photo" id="printPhotoFrame">
         <img id="printProfilePhoto" src="profile.jpg" alt="Profile photo" />
-        <div class="p-photo-placeholder"><div class="p-photo-circle"></div>Photo Holder<br/>Add Image Later</div>
+        <div class="p-photo-placeholder"><div class="p-photo-circle">
       </div>
     </div>
 
