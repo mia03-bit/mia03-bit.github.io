@@ -1,301 +1,1306 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Minimalist black and silver professional CV" />
+  <title>YOUR_NAME_CV</title>
+  <style>
+    /* =========================
+       THEME VARIABLES
+       ========================= */
+    :root{
+      --bg:#060708;
+      --panel:#0d0f11;
+      --panel-2:#111417;
+      --panel-3:#16191d;
+      --silver:#d8dadd;
+      --silver-2:#aeb4bc;
+      --silver-3:#7d858f;
+      --text:#eef0f2;
+      --muted:#b5bac1;
+      --line:#2c3137;
+      --shadow:0 32px 80px rgba(0,0,0,.46);
+      --max:1160px;
+      --page-bg:#060708;
+      --toolbar-bg:#0e1113;
+      --toolbar-hover:#15181b;
+      --cv-bg-1:#0d0f11;
+      --cv-bg-2:#0a0c0e;
+      --top-bg-1:#0b0d0f;
+      --top-bg-2:#111418;
+      --content-bg-1:#101316;
+      --content-bg-2:#0c0f11;
+      --card-bg-1:rgba(255,255,255,.022);
+      --card-bg-2:rgba(255,255,255,.006);
+      --photo-bg-1:#0e1113;
+      --photo-bg-2:#161a1e;
+    }
 
-    <title>Your Name - Cybersecurity CV</title>
+    html[data-theme="light"]{
+      --bg:#f2f3f4;
+      --panel:#ffffff;
+      --panel-2:#f5f6f7;
+      --panel-3:#ebedf0;
+      --silver:#34383d;
+      --silver-2:#60666e;
+      --silver-3:#8a9098;
+      --text:#111315;
+      --muted:#555b63;
+      --line:#cfd3d8;
+      --shadow:0 28px 68px rgba(18,22,27,.13);
+      --page-bg:#eef0f2;
+      --toolbar-bg:rgba(255,255,255,.88);
+      --toolbar-hover:#ffffff;
+      --cv-bg-1:#ffffff;
+      --cv-bg-2:#f8f9fa;
+      --top-bg-1:#f8f9fa;
+      --top-bg-2:#eef0f2;
+      --content-bg-1:#ffffff;
+      --content-bg-2:#f6f7f8;
+      --card-bg-1:rgba(0,0,0,.018);
+      --card-bg-2:rgba(0,0,0,.006);
+      --photo-bg-1:#f7f8f9;
+      --photo-bg-2:#e9ecef;
+    }
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 25px;
-            color: #111;
-            line-height: 1.5;
-            font-size: 14px;
-        }
+    /* =========================
+       BASE STYLES
+       ========================= */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      padding:28px 16px 56px;
+      background:
+        radial-gradient(circle at 12% 8%,rgba(255,255,255,.055),transparent 22%),
+        radial-gradient(circle at 88% 2%,rgba(255,255,255,.035),transparent 20%),
+        var(--page-bg);
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      overflow-x:hidden;
+    }
 
-        h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:44px 44px;
+      mask-image:linear-gradient(to bottom,#000,transparent 88%);
+    }
 
-        .contact {
-            margin-top: 6px;
-            color: #333;
-        }
+    /* =========================
+       TOP ACTION BAR
+       ========================= */
+    .toolbar{
+      width:min(var(--max),100%);
+      margin:0 auto 14px;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:9px;
+      position:relative;
+      z-index:2;
+    }
+    .toolbar button{
+      appearance:none;
+      border:1px solid var(--line);
+      background:var(--toolbar-bg);
+      color:var(--silver);
+      padding:10px 17px;
+      border-radius:999px;
+      cursor:pointer;
+      font:inherit;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.02em;
+      transition:.25s ease;
+    }
+    .toolbar button:hover{transform:translateY(-2px);border-color:#777f88;background:var(--toolbar-hover)}
 
-        .contact a {
-            color: #111;
-            text-decoration: none;
-        }
+    /* =========================
+       CV SHELL
+       ========================= */
+    .cv{
+      width:min(var(--max),100%);
+      margin:0 auto;
+      background:linear-gradient(180deg,var(--cv-bg-1) 0%,var(--cv-bg-2) 100%);
+      border:1px solid rgba(216,218,221,.12);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      z-index:2;
+      animation:enter .75s cubic-bezier(.2,.7,.2,1) both;
+    }
+    .cv::before{
+      content:"";
+      position:absolute;
+      inset:14px;
+      border:1px solid rgba(216,218,221,.07);
+      border-radius:20px;
+      pointer-events:none;
+      z-index:5;
+    }
 
-        section {
-            margin-top: 25px;
-        }
+    /* =========================
+       HEADER / IDENTITY AREA
+       ========================= */
+    .top{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 255px;
+      gap:34px;
+      padding:38px 42px 32px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.03),transparent 35%),
+        linear-gradient(180deg,var(--top-bg-1) 0%,var(--top-bg-2) 100%);
+      border-bottom:1px solid rgba(216,218,221,.09);
+      overflow:hidden;
+    }
+    .top::before{
+      content:"";
+      position:absolute;
+      left:42px;right:42px;bottom:0;height:1px;
+      background:linear-gradient(90deg,var(--silver),rgba(216,218,221,.23),transparent 82%);
+    }
+    .top::after{
+      content:"";
+      position:absolute;
+      width:210px;height:210px;
+      right:-72px;top:-90px;
+      border:1px solid rgba(216,218,221,.075);
+      border-radius:50%;
+      box-shadow:0 0 0 36px rgba(216,218,221,.018),0 0 0 72px rgba(216,218,221,.012);
+    }
 
-        h2 {
-            font-size: 16px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #222;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-        }
+    .top-left{position:relative;z-index:1}
 
-        h3 {
-            font-size: 14px;
-            margin: 0;
-        }
+    /* Keep the silver line design, but make it more architectural and understated. */
+    .top-line{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      width:100%;
+      margin-bottom:19px;
+    }
+    .top-line::before{
+      content:"";
+      width:10px;height:10px;
+      border:1px solid rgba(216,218,221,.42);
+      border-radius:50%;
+      box-shadow:0 0 0 5px rgba(216,218,221,.025);
+      flex:0 0 auto;
+    }
+    .top-line::after{
+      content:"";
+      height:1px;
+      flex:1;
+      background:linear-gradient(90deg,var(--silver),rgba(216,218,221,.28),transparent 96%);
+    }
+    .top-line span{
+      width:26px;height:1px;
+      background:rgba(216,218,221,.22);
+      order:3;
+    }
 
-        .item {
-            margin-bottom: 16px;
-        }
+    .identity{
+      margin:0 0 18px;
+      position:relative;
+      padding-left:18px;
+    }
+    .identity::before{
+      content:"";
+      position:absolute;
+      left:0;top:4px;bottom:4px;width:2px;
+      background:linear-gradient(180deg,var(--silver),rgba(216,218,221,.1));
+      border-radius:999px;
+    }
+    .name{
+      font-size:clamp(34px,4.7vw,58px);
+      line-height:.93;
+      letter-spacing:-.045em;
+      font-weight:850;
+      text-transform:uppercase;
+      color:var(--text);
+    }
+    .role{
+      margin-top:9px;
+      color:var(--silver-2);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
 
-        .meta {
-            margin: 2px 0 6px;
-            color: #444;
-        }
+    /* Contact information */
+    .contact-strip{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:0;
+      margin:0 0 23px;
+      padding:11px 10px;
+      border:1px solid rgba(216,218,221,.075);
+      border-radius:15px;
+      background:linear-gradient(180deg,rgba(255,255,255,.018),rgba(255,255,255,.006));
+      position:relative;
+      overflow:hidden;
+    }
+    .contact-strip::before{
+      content:"";
+      position:absolute;
+      left:0;top:0;width:88px;height:1px;
+      background:linear-gradient(90deg,var(--silver),transparent);
+      opacity:.65;
+    }
+    .contact-strip::after{
+      content:"";
+      position:absolute;
+      right:12px;bottom:8px;
+      width:28px;height:28px;
+      border-right:1px solid rgba(216,218,221,.08);
+      border-bottom:1px solid rgba(216,218,221,.08);
+      border-radius:0 0 8px 0;
+      pointer-events:none;
+    }
+    .contact-item{
+      min-width:0;
+      padding:3px 9px;
+      position:relative;
+    }
+    .contact-item + .contact-item::before{
+      content:"";
+      position:absolute;
+      left:0;top:4px;bottom:4px;width:1px;
+      background:linear-gradient(180deg,transparent,rgba(216,218,221,.12),transparent);
+    }
+    .contact-label{
+      display:block;
+      color:var(--silver-3);
+      font-size:8px;
+      font-weight:850;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+    }
+    .contact-value{
+      display:block;
+      color:var(--silver-2);
+      font-size:11px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 
-        ul {
-            margin: 5px 0 0;
-            padding-left: 20px;
-        }
+    /* Technical skills */
+    .skills-title-row{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      margin:0 0 14px;
+    }
+    .skills-title{
+      font-size:24px;
+      line-height:1;
+      letter-spacing:-.02em;
+      font-weight:820;
+      text-transform:uppercase;
+      color:var(--silver);
+      white-space:nowrap;
+    }
+    .skills-title span{color:var(--silver-2);font-weight:620}
+    .skills-title-row::after{
+      content:"";
+      height:1px;
+      flex:1;
+      background:linear-gradient(90deg,rgba(216,218,221,.2),transparent);
+    }
 
-        li {
-            margin-bottom: 4px;
-        }
+    .skills-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      max-width:720px;
+    }
+    .skill-box{
+      border:1px solid rgba(216,218,221,.075);
+      border-radius:15px;
+      padding:12px 13px 11px;
+      background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.006));
+      position:relative;
+      overflow:hidden;
+      transition:.25s ease;
+    }
+    .skill-box:hover{transform:translateY(-2px);border-color:rgba(216,218,221,.15)}
+    .skill-box::after{
+      content:"";
+      position:absolute;
+      width:42px;height:42px;
+      right:-20px;bottom:-20px;
+      border:1px solid rgba(216,218,221,.06);
+      transform:rotate(45deg);
+    }
+    .skill-label{
+      color:var(--silver);
+      font-size:9px;
+      font-weight:850;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+    .skill-text{color:var(--muted);font-size:12px;line-height:1.55}
 
-        p {
-            margin: 5px 0;
-        }
+    /* Profile photo */
+    .photo-wrap{
+      position:relative;
+      z-index:1;
+      align-self:end;
+      justify-self:end;
+      width:235px;
+      animation:photoIn .9s .1s both;
+    }
+    .photo-card{
+      width:235px;height:278px;
+      border:1px solid rgba(216,218,221,.17);
+      border-radius:24px;
+      background:linear-gradient(180deg,var(--photo-bg-1) 0%,var(--photo-bg-2) 100%);
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 22px 50px rgba(0,0,0,.36);
+    }
+    .photo-card::before{
+      content:"";
+      position:absolute;
+      inset:13px;
+      border:1px solid rgba(216,218,221,.11);
+      border-radius:17px;
+      z-index:2;
+      pointer-events:none;
+    }
+    .photo-card::after{
+      content:"";
+      position:absolute;
+      width:74px;height:74px;
+      right:-20px;bottom:-18px;
+      border:1px solid rgba(216,218,221,.11);
+      border-radius:50%;
+      box-shadow:0 0 0 18px rgba(216,218,221,.022);
+    }
+    .photo-inner{width:100%;height:100%;display:grid;place-items:center;position:relative;overflow:hidden}
+    .photo-inner img{display:none;width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.05)}
+    .photo-inner.has-image img{display:block}
+    .photo-inner.has-image .photo-placeholder{display:none}
+    .photo-placeholder{
+      color:var(--silver-3);
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:10px;
+      font-weight:800;
+    }
+    .photo-icon{width:70px;height:70px;margin:0 auto 13px;border-radius:50%;border:1px solid rgba(216,218,221,.18);position:relative}
+    .photo-icon::before{content:"";position:absolute;width:21px;height:21px;border-radius:50%;background:rgba(216,218,221,.33);left:24px;top:12px}
+    .photo-icon::after{content:"";position:absolute;width:39px;height:22px;border-radius:22px 22px 8px 8px;background:rgba(216,218,221,.33);left:15px;bottom:10px}
+    .photo-tag{
+      position:absolute;
+      left:18px;bottom:18px;
+      background:rgba(7,9,11,.78);
+      border:1px solid rgba(216,218,221,.16);
+      color:var(--silver);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:9px;
+      font-weight:850;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      backdrop-filter:blur(6px);
+      z-index:3;
+    }
+    .photo-accent{
+      position:absolute;
+      width:66px;height:66px;
+      left:-18px;top:26px;
+      border-left:1px solid rgba(216,218,221,.15);
+      border-top:1px solid rgba(216,218,221,.15);
+      border-radius:16px 0 0 0;
+      pointer-events:none;
+    }
+    .photo-accent::after{
+      content:"";
+      position:absolute;
+      width:34px;height:1px;
+      left:-1px;top:-8px;
+      background:linear-gradient(90deg,var(--silver-2),transparent);
+      opacity:.5;
+    }
 
-        strong {
-            font-weight: 700;
-        }
+    /* =========================
+       MAIN CONTENT
+       ========================= */
+    .content{padding:31px 36px 36px;background:linear-gradient(180deg,var(--content-bg-1) 0%,var(--content-bg-2) 100%)}
+    .content::before{
+      content:"";
+      display:block;
+      height:1px;
+      margin:-8px 0 28px;
+      background:linear-gradient(90deg,transparent,rgba(216,218,221,.09) 18%,rgba(216,218,221,.09) 82%,transparent);
+    }
+    .section{position:relative;animation:fadeUp .72s both}
+    .section + .section{margin-top:30px}
+    .section-head{
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:14px;
+      margin-bottom:17px;
+    }
+    .section-head > div:first-child{
+      display:grid;
+      grid-template-columns:auto minmax(60px,1fr);
+      align-items:center;
+      gap:14px;
+      width:100%;
+    }
+    .section-head h2{
+      color:var(--silver);
+      font-size:14px;
+      font-weight:850;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+    }
+    .section-line{height:1px;background:linear-gradient(90deg,rgba(216,218,221,.22),transparent)}
+    .section-dot{width:7px;height:7px;border:1px solid rgba(216,218,221,.35);border-radius:50%}
 
-        @media print {
-            body {
-                margin: 0;
-                max-width: none;
-            }
+    /* Projects */
+    .projects{display:grid;gap:15px}
+    .project{
+      position:relative;
+      display:grid;
+      grid-template-columns:64px minmax(0,1fr);
+      gap:16px;
+      padding:18px 18px 17px;
+      border:1px solid rgba(216,218,221,.08);
+      border-radius:20px;
+      background:linear-gradient(180deg,var(--card-bg-1),var(--card-bg-2));
+      overflow:hidden;
+      transition:.25s ease;
+    }
+    .project:hover{transform:translateY(-3px);border-color:rgba(216,218,221,.17);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
+    .project::before{
+      content:"";
+      position:absolute;
+      left:0;top:18px;bottom:18px;width:2px;
+      background:linear-gradient(180deg,var(--silver),transparent);
+      opacity:.5;
+    }
+    .project::after{
+      content:"";
+      position:absolute;
+      width:86px;height:86px;
+      right:-44px;top:-44px;
+      border:1px solid rgba(216,218,221,.07);
+      transform:rotate(45deg);
+    }
+    .num{
+      width:56px;height:56px;
+      border-radius:18px;
+      border:1px solid rgba(216,218,221,.1);
+      background:linear-gradient(180deg,#0d1012,#171a1d);
+      display:grid;place-items:center;
+      color:var(--silver);
+      font-size:14px;
+      font-weight:850;
+      letter-spacing:.08em;
+    }
+    .project h3{font-size:19px;line-height:1.25;color:var(--text);margin-bottom:6px;font-weight:780}
+    .project h3::before{
+      content:"";
+      display:inline-block;
+      width:7px;height:7px;
+      border:1px solid rgba(216,218,221,.28);
+      border-radius:50%;
+      margin-right:10px;
+      vertical-align:2px;
+    }
+    .stack{color:var(--silver-2);font-size:13px;line-height:1.55;margin-bottom:10px}
+    .stack strong{color:var(--silver)}
+    .project ul{margin-left:18px;display:grid;gap:6px;color:var(--muted);font-size:14px;line-height:1.72}
 
-            a {
-                color: #111;
-            }
-        }
-    </style>
+    /* Education */
+    .education{
+      border:1px solid rgba(216,218,221,.08);
+      border-radius:20px;
+      padding:21px 21px 19px;
+      background:linear-gradient(180deg,var(--card-bg-1),var(--card-bg-2));
+      position:relative;
+      overflow:hidden;
+    }
+    .education::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--silver),rgba(216,218,221,.13))}
+    .education::after{content:"";position:absolute;right:-36px;bottom:-36px;width:100px;height:100px;border:1px solid rgba(216,218,221,.06);border-radius:50%}
+    .edu-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:9px}
+    .school{font-size:22px;line-height:1.2;font-weight:820;color:var(--text)}
+    .school::before{content:"";display:inline-block;width:20px;height:1px;background:var(--silver-2);margin-right:10px;vertical-align:6px;opacity:.75}
+    .date{color:var(--silver-2);font-size:13px;font-style:italic;white-space:nowrap;padding-top:3px}
+    .degree{color:var(--silver-2);font-size:15px;margin-bottom:9px}
+    .coursework{color:var(--muted);font-size:14px;line-height:1.7}
+    .coursework strong{color:var(--silver)}
+
+    .theme-toggle{
+      width:41px;
+      height:41px;
+      padding:0!important;
+      display:grid;
+      place-items:center;
+      border-radius:50%!important;
+      position:relative;
+      overflow:hidden;
+    }
+    .theme-toggle svg{
+      width:17px;
+      height:17px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      transition:transform .35s ease,opacity .25s ease;
+    }
+    .theme-toggle .moon-icon{display:none}
+    .theme-toggle .sun-icon{display:block}
+    html[data-theme="light"] .theme-toggle .sun-icon{display:none}
+    html[data-theme="light"] .theme-toggle .moon-icon{display:block}
+    .theme-toggle:hover svg{transform:rotate(9deg) scale(1.06)}
+
+    /* Pure CSS metallic ribbons inspired by the reference image. */
+    .metallic-ribbons{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+      opacity:.78;
+    }
+    .metallic-ribbons::before{
+      content:"";
+      position:absolute;
+      width:1120px;
+      height:470px;
+      left:-210px;
+      top:92px;
+      border-radius:50%;
+      transform:rotate(-16deg) skewX(-18deg);
+      background:
+        linear-gradient(178deg,
+          transparent 0 35%,
+          rgba(255,255,255,.025) 37%,
+          rgba(210,215,220,.18) 40%,
+          rgba(255,255,255,.70) 42.2%,
+          rgba(98,103,109,.22) 44.6%,
+          rgba(255,255,255,.09) 47%,
+          transparent 50% 56%,
+          rgba(255,255,255,.05) 58%,
+          rgba(172,178,184,.42) 61%,
+          rgba(255,255,255,.88) 63%,
+          rgba(76,81,87,.20) 65.4%,
+          transparent 69%);
+      filter:blur(8px);
+      -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 80%,transparent 100%);
+      opacity:.63;
+    }
+    .metallic-ribbons::after{
+      content:"";
+      position:absolute;
+      width:1060px;
+      height:430px;
+      right:-245px;
+      top:-72px;
+      border-radius:48%;
+      transform:rotate(-31deg) skewX(-14deg);
+      background:
+        linear-gradient(180deg,
+          transparent 0 31%,
+          rgba(255,255,255,.04) 34%,
+          rgba(202,207,213,.34) 38%,
+          rgba(255,255,255,.86) 40.2%,
+          rgba(115,120,127,.20) 43%,
+          transparent 47% 53%,
+          rgba(255,255,255,.04) 56%,
+          rgba(186,192,198,.28) 59%,
+          rgba(255,255,255,.74) 61%,
+          rgba(74,79,86,.16) 63.8%,
+          transparent 68%);
+      filter:blur(7px);
+      -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 84%,transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0%,#000 18%,#000 84%,transparent 100%);
+      opacity:.72;
+    }
+    .ribbon-streak{
+      position:absolute;
+      width:920px;
+      height:170px;
+      left:50%;
+      top:255px;
+      transform:translateX(-50%) rotate(-12deg);
+      border-radius:50%;
+      border-top:1px solid rgba(255,255,255,.30);
+      box-shadow:
+        0 -3px 14px rgba(255,255,255,.12),
+        0 16px 32px rgba(255,255,255,.035);
+      opacity:.45;
+    }
+    html[data-theme="light"] body{
+      background:
+        radial-gradient(circle at 10% 8%,rgba(255,255,255,.95),transparent 24%),
+        radial-gradient(circle at 92% 0%,rgba(110,118,128,.10),transparent 25%),
+        var(--page-bg);
+    }
+    html[data-theme="light"] body::before{
+      opacity:.12;
+      background-image:
+        linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);
+    }
+    html[data-theme="light"] .metallic-ribbons{opacity:.33}
+    html[data-theme="light"] .metallic-ribbons::before,
+    html[data-theme="light"] .metallic-ribbons::after{
+      filter:blur(9px) grayscale(1);
+      mix-blend-mode:multiply;
+    }
+    html[data-theme="light"] .ribbon-streak{
+      border-color:rgba(45,50,56,.18);
+      box-shadow:0 -3px 14px rgba(60,66,72,.08);
+    }
+    html[data-theme="light"] .cv::before{border-color:rgba(28,32,36,.07)}
+    html[data-theme="light"] .top{border-bottom-color:rgba(28,32,36,.09)}
+    html[data-theme="light"] .top::after{border-color:rgba(36,40,45,.08);box-shadow:0 0 0 36px rgba(50,55,60,.018),0 0 0 72px rgba(50,55,60,.01)}
+    html[data-theme="light"] .contact-strip,
+    html[data-theme="light"] .skill-box,
+    html[data-theme="light"] .project,
+    html[data-theme="light"] .education{border-color:rgba(38,43,49,.10)}
+    html[data-theme="light"] .contact-strip{background:linear-gradient(180deg,rgba(0,0,0,.015),rgba(0,0,0,.004))}
+    html[data-theme="light"] .skill-box{background:linear-gradient(180deg,rgba(0,0,0,.012),rgba(0,0,0,.003))}
+    html[data-theme="light"] .project:hover{border-color:rgba(35,40,46,.18);background:linear-gradient(180deg,rgba(0,0,0,.022),rgba(0,0,0,.006))}
+    html[data-theme="light"] .num{background:linear-gradient(180deg,#f4f5f6,#e8eaed);border-color:#d5d8dc}
+    html[data-theme="light"] .photo-tag{background:rgba(255,255,255,.84);color:#34383d;border-color:#d6d9dd}
+    html[data-theme="light"] .photo-icon::before,
+    html[data-theme="light"] .photo-icon::after{background:rgba(55,60,66,.28)}
+
+    /* =========================
+       ANIMATIONS
+       ========================= */
+    @keyframes enter{from{opacity:0;transform:translateY(20px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes photoIn{from{opacity:0;transform:translateY(16px) rotate(.6deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+
+    /* =========================
+       RESPONSIVE LAYOUT
+       ========================= */
+    @media(max-width:940px){
+      .top{grid-template-columns:1fr}
+      .photo-wrap{justify-self:start}
+      .contact-strip{grid-template-columns:repeat(2,1fr)}
+      .contact-item:nth-child(3)::before,.contact-item:nth-child(5)::before{display:none}
+      .contact-item:nth-child(n+3){border-top:1px solid rgba(216,218,221,.06);padding-top:9px;margin-top:5px}
+    }
+    @media(max-width:720px){
+      body{padding:14px 9px 38px}
+      .top{padding:28px 22px 25px}
+      .top::before{left:22px;right:22px}
+      .skills-grid{grid-template-columns:1fr}
+      .contact-strip{grid-template-columns:1fr}
+      .contact-item + .contact-item::before{display:none}
+      .contact-item + .contact-item{border-top:1px solid rgba(216,218,221,.06);padding-top:9px;margin-top:5px}
+      .content{padding:24px 18px 28px}
+      .project{grid-template-columns:1fr}
+      .edu-top{flex-direction:column}
+      .date{white-space:normal}
+      .photo-wrap,.photo-card{width:100%;max-width:240px}
+      .name{font-size:36px}
+    }
+
+    /* Dedicated one-page A4 export. The dark website remains unchanged on screen. */
+    /* =========================
+       PRINT / PDF LAYOUT
+       ========================= */
+    .print-sheet{display:none}
+
+    @media print{
+      @page{size:A4 portrait;margin:0}
+      html,body{
+        width:210mm;
+        height:297mm;
+        margin:0!important;
+        padding:0!important;
+        background:#fff!important;
+        color:#111!important;
+        overflow:hidden!important;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+      }
+      body::before,.toolbar,.cv,.metallic-ribbons{display:none!important}
+      .print-sheet{
+        display:block!important;
+        width:210mm;
+        height:297mm;
+        padding:8mm 10mm 7mm;
+        background:#fff;
+        color:#111;
+        font-family:Arial,Helvetica,sans-serif;
+        overflow:hidden;
+      }
+      .p-topline{
+        height:.35mm;
+        background:linear-gradient(90deg,#111 0%,#777 58%,transparent 100%);
+        margin-bottom:3mm;
+        position:relative;
+      }
+      .p-topline::before{
+        content:"";
+        position:absolute;
+        left:0;top:-1mm;
+        width:2mm;height:2mm;
+        border:.25mm solid #666;
+        border-radius:50%;
+        background:#fff;
+      }
+      .p-identity-row{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:5.5mm;
+        margin-bottom:3mm;
+      }
+      .p-identity{flex:1;min-width:0}
+      .p-name{
+        font-size:22pt;
+        line-height:.94;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:-.03em;
+        margin:0 0 1.5mm;
+      }
+      .p-role{
+        font-size:7.2pt;
+        font-weight:700;
+        letter-spacing:.09em;
+        text-transform:uppercase;
+        color:#333;
+      }
+      .p-contact{
+        display:flex;
+        gap:0;
+        border:.22mm solid #d0d0d0;
+        border-radius:1.6mm;
+        margin-top:2.8mm;
+        overflow:hidden;
+      }
+      .p-contact-item{
+        flex:1;
+        min-width:0;
+        padding:1.4mm 1.6mm 1.3mm;
+        border-left:.22mm solid #e0e0e0;
+      }
+      .p-contact-item:first-child{border-left:none}
+      .p-contact-label{
+        display:block;
+        font-size:5.2pt;
+        line-height:1;
+        color:#666;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        margin-bottom:.7mm;
+        font-weight:700;
+      }
+      .p-contact-value{
+        display:block;
+        font-size:6.3pt;
+        line-height:1.25;
+        color:#222;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+      }
+      .p-photo{
+        width:30mm;
+        height:37mm;
+        flex:0 0 auto;
+        border:.25mm solid #bdbdbd;
+        border-radius:2mm;
+        background:#f5f5f5;
+        overflow:hidden;
+        position:relative;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .p-photo img{display:none;width:100%;height:100%;object-fit:cover;filter:grayscale(100%)}
+      .p-photo.has-image img{display:block}
+      .p-photo.has-image .p-photo-placeholder{display:none}
+      .p-photo-placeholder{
+        text-align:center;
+        color:#777;
+        font-size:5.7pt;
+        line-height:1.42;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+      }
+      .p-photo-circle{
+        width:10mm;height:10mm;
+        margin:0 auto 1.6mm;
+        border:.22mm solid #bbb;
+        border-radius:50%;
+        position:relative;
+      }
+      .p-photo-circle::before{
+        content:"";position:absolute;width:2.8mm;height:2.8mm;border-radius:50%;background:#b7b7b7;left:3.35mm;top:1.55mm;
+      }
+      .p-photo-circle::after{
+        content:"";position:absolute;width:5.4mm;height:3mm;border-radius:3mm 3mm 1mm 1mm;background:#b7b7b7;left:2.05mm;bottom:1.1mm;
+      }
+      .p-skills{
+        margin:0 0 3.2mm;
+      }
+      .p-section-heading{
+        display:flex;
+        align-items:center;
+        gap:2mm;
+        margin-bottom:1.5mm;
+      }
+      .p-section-heading h2{
+        margin:0;
+        font-size:8.2pt;
+        line-height:1;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+        white-space:nowrap;
+      }
+      .p-section-heading span{
+        height:.25mm;
+        flex:1;
+        background:linear-gradient(90deg,#777,#c8c8c8,transparent);
+      }
+      .p-skill-line{
+        font-size:6.9pt;
+        line-height:1.42;
+        margin:.65mm 0;
+        color:#222;
+      }
+      .p-skill-line strong{font-weight:800}
+
+      .p-projects{margin-top:.2mm}
+      .p-project{
+        margin:0 0 2.4mm;
+        padding:0 0 1.8mm;
+        border-bottom:.18mm solid #e2e2e2;
+        break-inside:avoid;
+      }
+      .p-project:last-child{margin-bottom:1.8mm}
+      .p-project-title{
+        font-size:8.2pt;
+        line-height:1.08;
+        font-weight:800;
+        margin:0 0 .7mm;
+      }
+      .p-stack{
+        font-size:7.8pt;
+        line-height:1.25;
+        margin:0 0 .7mm;
+        color:#333;
+      }
+      .p-stack strong{font-weight:800;color:#111}
+      .p-project ul{
+        margin:0 0 0 3.6mm;
+        padding:0;
+        font-size:6.55pt;
+        line-height:1.32;
+        color:#333;
+      }
+      .p-project li{margin:0 0 .35mm}
+
+      .p-education{
+        margin-top:.9mm;
+        border-top:.3mm solid #777;
+        padding-top:1.7mm;
+        break-inside:avoid;
+      }
+      .p-edu-row{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:4mm;
+        margin-bottom:.7mm;
+      }
+      .p-school{font-size:7.8pt;font-weight:800;line-height:1.15}
+      .p-date{font-size:6.4pt;font-style:italic;white-space:nowrap;color:#333}
+      .p-degree,.p-coursework{font-size:6.5pt;line-height:1.35;color:#333}
+      .p-degree{margin-bottom:.6mm}
+      .p-coursework strong{color:#111}
+
+      *{animation:none!important;transition:none!important;box-shadow:none!important}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="metallic-ribbons" aria-hidden="true"><div class="ribbon-streak"></div></div>
 
-    <!-- HEADER -->
-    <header>
-        <h1>YOUR FULL NAME</h1>
+  <!-- ACTION BAR -->
+  <div class="toolbar">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" title="Toggle light/dark mode">
+      <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.8A8.5 8.5 0 0 1 9.2 3.5 8.6 8.6 0 1 0 20.5 14.8Z"/></svg>
+      <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+    </button>
+    <button id="savePdfBtn" type="button">Save as PDF</button>
+  </div>
 
-        <div class="contact">
-            +63 XXX XXX XXXX |
-            Philippines |
-            <a href="mailto:yourname@gmail.com">
-                yourname@gmail.com
-            </a> |
-            <a href="https://github.com/yourusername">
-                github.com/yourusername
-            </a>
+  <!-- MAIN CV -->
+  <main class="cv">
+    <!-- HEADER: name, contact, skills, photo -->
+    <section class="top">
+      <div class="top-left">
+        <div class="top-line" aria-hidden="true"><span></span></div>
+
+        <div class="identity">
+          <h1 class="name" id="cvName">SHAWN FIGUEROA</h1>
+          <div class="role">B.S. in Information Technology • Computer Security</div>
         </div>
-    </header>
 
+        <div class="contact-strip" aria-label="Contact information">
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">sham.figueroa.up@phinmaed.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">09164946911</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">github.com/shawnamasen</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Country</span>
+            <span class="contact-value">Pangasinan, PH</span>
+          </div>
+        </div>
 
-    <!-- TECHNICAL SKILLS -->
-    <section>
-        <h2>Technical Skills</h2>
+        <div class="skills-title-row">
+          <h2 class="skills-title">Technical <span>Skills</span></h2>
+        </div>
 
-        <p>
-            <strong>Cybersecurity:</strong>
-            Security Monitoring, Incident Response, Vulnerability Assessment,
-            Threat Detection, Network Security, Risk Assessment
-        </p>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <div class="skill-label">Languages</div>
+            <div class="skill-text">PHP (vanilla), Python, Java, JavaScript, Kotlin, SQL, HTML/CSS</div>
+          </div>
+          <div class="skill-box">
+            <div class="skill-label">Frameworks &amp; Tools</div>
+            <div class="skill-text">React.js, Node.js, Express.js, Laravel, MongoDB, MySQL, Retrofit, Git, Postman, XAMPP</div>
+          </div>
+        </div>
+      </div>
 
-        <p>
-            <strong>Security Tools:</strong>
-            Wireshark, Nmap, Burp Suite, Nessus, Wazuh, Splunk
-        </p>
-
-        <p>
-            <strong>Networking:</strong>
-            TCP/IP, DNS, DHCP, HTTP/HTTPS, VPN, Firewalls
-        </p>
-
-        <p>
-            <strong>Operating Systems:</strong>
-            Windows, Linux, Ubuntu, Kali Linux
-        </p>
-
-        <p>
-            <strong>Programming:</strong>
-            Python, Bash, PowerShell, SQL
-        </p>
-
-        <p>
-            <strong>Frameworks:</strong>
-            MITRE ATT&amp;CK, OWASP Top 10, NIST Cybersecurity Framework
-        </p>
+      <div class="photo-wrap">
+        <div class="photo-accent"></div>
+        <div class="photo-card">
+          <div class="photo-inner" id="photoFrame">
+            <!-- Put profile.jpg in the same folder, or change the filename below. -->
+            <img id="profilePhoto" src="profile.jpg" alt="Profile photo" />
+            <div class="photo-placeholder">
+              <div class="photo-icon"></div>
+              Photo Holder<br />Add Image Later
+            </div>
+            <div class="photo-tag">Photo</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-
-    <!-- PROJECTS -->
-    <section>
-        <h2>Projects</h2>
-
-        <div class="item">
-            <h3>Home SOC Lab</h3>
-
-            <ul>
-                <li>
-                    Built a virtual SOC environment using Windows and Linux
-                    systems for security monitoring and log analysis.
-                </li>
-
-                <li>
-                    Collected and analyzed security events to identify
-                    suspicious activity and potential threats.
-                </li>
-
-                <li>
-                    Investigated simulated alerts and documented findings.
-                </li>
-            </ul>
-
-            <p>
-                <strong>Tools:</strong>
-                Wazuh, Sysmon, Windows, Linux, Wireshark, VirtualBox
-            </p>
+    <!-- CONTENT: projects and education -->
+    <section class="content">
+      <div class="section">
+        <div class="section-head">
+          <div>
+            <h2>Projects</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="section-dot"></div>
         </div>
 
+        <div class="projects">
+          <article class="project">
+            <div class="num">01</div>
+            <div>
+              <h3>LearnEase AI – AI-Powered Learning Platform</h3>
+              <div class="stack"><strong>Tech Stack:</strong> React.js, Node.js, Express.js, Firebase, Gemini AI</div>
+              <ul>
+                <li>Engineered AI-powered reviewer and quiz generation modules using Gemini AI, automating educational content transformation.</li>
+                <li>Implemented a lightweight blockchain-based tamper-detection mechanism to verify review integrity and detect unauthorized modifications.</li>
+                <li>Conducted security testing and debugging, resolving application issues to improve reliability and AI-generated content integrity.</li>
+              </ul>
+            </div>
+          </article>
 
-        <div class="item">
-            <h3>Vulnerability Assessment Lab</h3>
+          <article class="project">
+            <div class="num">02</div>
+            <div>
+              <h3>FIND REY – Cup Shuffle Game</h3>
+              <div class="stack"><strong>Tech Stack:</strong> Java, Java Swing/AWT</div>
+              <ul>
+                <li>Architected a modular Java desktop game using object-oriented design principles with scene management and persistent save functionality.</li>
+                <li>Engineered betting mechanics, dynamic shuffle generation, achievements, and difficulty systems to deliver an engaging gameplay experience.</li>
+                <li>Implemented automated logic validation and debugging, ensuring reliable gameplay behavior and save/load operations.</li>
+              </ul>
+            </div>
+          </article>
 
-            <ul>
-                <li>
-                    Performed network reconnaissance, port scanning,
-                    and service enumeration.
-                </li>
+          <article class="project">
+            <div class="num">03</div>
+            <div>
+              <h3>Spark – Facility Reservation Management System</h3>
+              <div class="stack"><strong>Tech Stack:</strong> Kotlin, PHP, MySQL, Retrofit, REST API</div>
+              <ul>
+                <li>Developed a mobile and web-based facility reservation system supporting authentication, venue booking, event scheduling, and feedback management.</li>
+                <li>Integrated Retrofit and RESTful APIs to synchronize reservation data between Android clients and a PHP/MySQL backend.</li>
+                <li>Built an administrative web portal for managing facilities, reservations, events, and user feedback.</li>
+              </ul>
+            </div>
+          </article>
 
-                <li>
-                    Identified vulnerabilities and analyzed their
-                    potential security impact.
-                </li>
+          <article class="project">
+            <div class="num">04</div>
+            <div>
+              <h3>UPang Safety &amp; Incident Reporting System</h3>
+              <div class="stack"><strong>Tech Stack:</strong> Node.js, Express.js, MongoDB, JWT, Bcrypt, React.js</div>
+              <ul>
+                <li>Implemented JWT authentication and Bcrypt password hashing to secure user accounts and protected resources.</li>
+                <li>Developed RESTful APIs for incident reporting, tracking, and status management between users and administrators.</li>
+                <li>Implemented backend validation and security controls to strengthen authentication, protect incident data, and improve application reliability.</li>
+              </ul>
+            </div>
+          </article>
 
-                <li>
-                    Documented findings and recommended remediation steps.
-                </li>
-            </ul>
+          <article class="project">
+            <div class="num">05</div>
+            <div>
+              <h3>RoomPage – Hotel Room Booking Application</h3>
+              <div class="stack"><strong>Tech Stack:</strong> Kotlin, Android SDK, Retrofit, REST API</div>
+              <ul>
+                <li>Developed an Android hotel booking application supporting room reservations, user authentication, and booking management.</li>
+                <li>Integrated RESTful APIs with Retrofit to synchronize room availability, reservations, and user data.</li>
+                <li>Designed a modular Android architecture using Activities, Fragments, RecyclerView, and SharedPreferences for improved navigation and session management.</li>
+              </ul>
+            </div>
+          </article>
 
-            <p>
-                <strong>Tools:</strong>
-                Nmap, Nessus, Kali Linux, Burp Suite
-            </p>
+          <article class="project">
+            <div class="num">06</div>
+            <div>
+              <h3>MoneyMatic – Personal Finance Management Web Application</h3>
+              <div class="stack"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</div>
+              <ul>
+                <li>Developed a responsive personal finance application for budget tracking, financial goal management, and spending visualization.</li>
+                <li>Implemented client-side authentication workflows, including registration, login, password recovery, and account management.</li>
+                <li>Built interactive budgeting features using JavaScript while conducting testing and debugging to improve functionality and responsiveness.</li>
+              </ul>
+            </div>
+          </article>
         </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <div>
+            <h2>Education</h2>
+            <div class="section-line"></div>
+          </div>
+          <div class="section-dot"></div>
+        </div>
+
+        <article class="education">
+          <div class="edu-top">
+            <div class="school">PHINMA - University of Pangasinan</div>
+            <div class="date">August 2023 - Present</div>
+          </div>
+          <div class="degree">B.S. in Information Technology, <em>Computer Security</em></div>
+          <div class="coursework"><strong>Relevant Coursework:</strong> Ethical Hacking, Computer Forensics, Network Security, Cloud Programming</div>
+        </article>
+      </div>
     </section>
+  </main>
 
 
-    <!-- EXPERIENCE -->
-    <section>
-        <h2>Experience</h2>
+  <!-- ONE-PAGE A4 PDF VERSION -->
+  <section class="print-sheet" aria-hidden="true">
+    <div class="p-topline"></div>
 
-        <div class="item">
-            <h3>Cybersecurity Intern</h3>
+    <div class="p-identity-row">
+      <div class="p-identity">
+        <h1 class="p-name">SHAWN FIGUEROA</h1>
+        <div class="p-role">B.S. in Information Technology • Computer Security</div>
 
-            <p class="meta">
-                <strong>Company Name</strong> | Philippines |
-                Month Year – Month Year
-            </p>
-
-            <ul>
-                <li>
-                    Assisted with security monitoring, log analysis,
-                    and investigation of security alerts.
-                </li>
-
-                <li>
-                    Assisted with vulnerability assessments and
-                    security testing.
-                </li>
-
-                <li>
-                    Documented security findings and recommended
-                    remediation actions.
-                </li>
-            </ul>
+        <div class="p-contact">
+          <div class="p-contact-item"><span class="p-contact-label">Email</span><span class="p-contact-value">sham.figueroa.up@phinmaed.com</span></div>
+          <div class="p-contact-item"><span class="p-contact-label">Phone</span><span class="p-contact-value">09164946911</span></div>
+          <div class="p-contact-item"><span class="p-contact-label">GitHub</span><span class="p-contact-value">github.com/shawnamasen</span></div>
+          <div class="p-contact-item"><span class="p-contact-label">Country</span><span class="p-contact-value">Pangasinan, PH</span></div>
         </div>
+      </div>
+
+      <div class="p-photo" id="printPhotoFrame">
+        <img id="printProfilePhoto" src="profile.jpg" alt="Profile photo" />
+        <div class="p-photo-placeholder"><div class="p-photo-circle"></div>Photo Holder<br/>Add Image Later</div>
+      </div>
+    </div>
+
+    <div class="p-skills">
+      <div class="p-section-heading"><h2>Technical Skills</h2><span></span></div>
+      <div class="p-skill-line"><strong>Languages:</strong> PHP (vanilla), Python, Java, JavaScript, Kotlin, SQL, HTML/CSS</div>
+      <div class="p-skill-line"><strong>Frameworks &amp; Tools:</strong> React.js, Node.js, Express.js, Laravel, MongoDB, MySQL, Retrofit, Git, Postman, XAMPP</div>
+    </div>
+
+    <div class="p-section-heading"><h2>Projects</h2><span></span></div>
+    <div class="p-projects">
+      <div class="p-project">
+        <div class="p-project-title">LearnEase AI – AI-Powered Learning Platform</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> React.js, Node.js, Express.js, Firebase, Gemini AI</div>
+        <ul>
+          <li>Engineered AI-powered reviewer and quiz generation modules using Gemini AI, automating educational content transformation.</li>
+          <li>Implemented a lightweight blockchain-based tamper-detection mechanism to verify review integrity and detect unauthorized modifications.</li>
+          <li>Conducted security testing and debugging, resolving application issues to improve reliability and AI-generated content integrity.</li>
+        </ul>
+      </div>
+
+      <div class="p-project">
+        <div class="p-project-title">FIND REY – Cup Shuffle Game</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> Java, Java Swing/AWT</div>
+        <ul>
+          <li>Architected a modular Java desktop game using object-oriented design principles with scene management and persistent save functionality.</li>
+          <li>Engineered betting mechanics, dynamic shuffle generation, achievements, and difficulty systems to deliver an engaging gameplay experience.</li>
+          <li>Implemented automated logic validation and debugging, ensuring reliable gameplay behavior and save/load operations.</li>
+        </ul>
+      </div>
+
+      <div class="p-project">
+        <div class="p-project-title">Spark – Facility Reservation Management System</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> Kotlin, PHP, MySQL, Retrofit, REST API</div>
+        <ul>
+          <li>Developed a mobile and web-based facility reservation system supporting authentication, venue booking, event scheduling, and feedback management.</li>
+          <li>Integrated Retrofit and RESTful APIs to synchronize reservation data between Android clients and a PHP/MySQL backend.</li>
+          <li>Built an administrative web portal for managing facilities, reservations, events, and user feedback.</li>
+        </ul>
+      </div>
+
+      <div class="p-project">
+        <div class="p-project-title">UPang Safety &amp; Incident Reporting System</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> Node.js, Express.js, MongoDB, JWT, Bcrypt, React.js</div>
+        <ul>
+          <li>Implemented JWT authentication and Bcrypt password hashing to secure user accounts and protected resources.</li>
+          <li>Developed RESTful APIs for incident reporting, tracking, and status management between users and administrators.</li>
+          <li>Implemented backend validation and security controls to strengthen authentication, protect incident data, and improve application reliability.</li>
+        </ul>
+      </div>
+
+      <div class="p-project">
+        <div class="p-project-title">RoomPage – Hotel Room Booking Application</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> Kotlin, Android SDK, Retrofit, REST API</div>
+        <ul>
+          <li>Developed an Android hotel booking application supporting room reservations, user authentication, and booking management.</li>
+          <li>Integrated RESTful APIs with Retrofit to synchronize room availability, reservations, and user data.</li>
+          <li>Designed a modular Android architecture using Activities, Fragments, RecyclerView, and SharedPreferences for improved navigation and session management.</li>
+        </ul>
+      </div>
+
+      <div class="p-project">
+        <div class="p-project-title">MoneyMatic – Personal Finance Management Web Application</div>
+        <div class="p-stack"><strong>Tech Stack:</strong> HTML, CSS, JavaScript</div>
+        <ul>
+          <li>Developed a responsive personal finance application for budget tracking, financial goal management, and spending visualization.</li>
+          <li>Implemented client-side authentication workflows, including registration, login, password recovery, and account management.</li>
+          <li>Built interactive budgeting features using JavaScript while conducting testing and debugging to improve functionality and responsiveness.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="p-section-heading"><h2>Education</h2><span></span></div>
+    <div class="p-education">
+      <div class="p-edu-row">
+        <div class="p-school">PHINMA - University of Pangasinan</div>
+        <div class="p-date">August 2023 - Present</div>
+      </div>
+      <div class="p-degree">B.S. in Information Technology, <em>Computer Security</em></div>
+      <div class="p-coursework"><strong>Relevant Coursework:</strong> Ethical Hacking, Computer Forensics, Network Security, Cloud Programming</div>
+    </div>
+  </section>
+
+  <!-- INTERACTIONS: photo, theme toggle, save as PDF -->
+  <script>
+    (() => {
+      const img = document.getElementById('profilePhoto');
+      const frame = document.getElementById('photoFrame');
+      const saveBtn = document.getElementById('savePdfBtn');
+      const nameEl = document.getElementById('cvName');
+      const printImg = document.getElementById('printProfilePhoto');
+      const printFrame = document.getElementById('printPhotoFrame');
+      const themeToggle = document.getElementById('themeToggle');
+      const root = document.documentElement;
+
+      if (img && frame) {
+        const show = () => { if (img.naturalWidth > 0) frame.classList.add('has-image'); };
+        img.addEventListener('load', show);
+        img.addEventListener('error', () => frame.classList.remove('has-image'));
+        if (img.complete) show();
+      }
+
+      if (printImg && printFrame) {
+        const showPrint = () => { if (printImg.naturalWidth > 0) printFrame.classList.add('has-image'); };
+        printImg.addEventListener('load', showPrint);
+        printImg.addEventListener('error', () => printFrame.classList.remove('has-image'));
+        if (printImg.complete) showPrint();
+      }
 
 
-        <div class="item">
-            <h3>IT Support</h3>
+      const setTheme = (theme) => {
+        root.setAttribute('data-theme', theme);
+        try { localStorage.setItem('cv-theme', theme); } catch (_) {}
+        if (themeToggle) {
+          const next = theme === 'light' ? 'dark' : 'light';
+          themeToggle.setAttribute('aria-label', `Switch to ${next} mode`);
+          themeToggle.setAttribute('title', `Switch to ${next} mode`);
+        }
+      };
 
-            <p class="meta">
-                <strong>Company Name</strong> | Philippines |
-                Month Year – Month Year
-            </p>
+      let initialTheme = 'dark';
+      try {
+        const savedTheme = localStorage.getItem('cv-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') initialTheme = savedTheme;
+      } catch (_) {}
+      setTheme(initialTheme);
 
-            <ul>
-                <li>
-                    Provided technical support for Windows systems,
-                    applications, and network connectivity.
-                </li>
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+          setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+      }
 
-                <li>
-                    Troubleshot TCP/IP, DNS, DHCP, and user access issues.
-                </li>
-
-                <li>
-                    Assisted with account management and basic
-                    endpoint security practices.
-                </li>
-            </ul>
-        </div>
-    </section>
-
-
-    <!-- CERTIFICATIONS -->
-    <section>
-        <h2>Certifications</h2>
-
-        <div class="item">
-            <p>
-                <strong>CompTIA Security+</strong> — CompTIA, Year
-            </p>
-
-            <p>
-                <strong>Google Cybersecurity Professional Certificate</strong>
-                — Google, Year
-            </p>
-
-            <p>
-                <strong>Certification Name</strong>
-                — Issuing Organization, Year
-            </p>
-        </div>
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section>
-        <h2>Education</h2>
-
-        <div class="item">
-            <h3>Bachelor of Science in Information Technology</h3>
-
-            <p class="meta">
-                <strong>University Name</strong> | Philippines |
-                Year – Year
-            </p>
-        </div>
-    </section>
-
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          const currentName = (nameEl?.textContent || 'SHAWN FIGUEROA').trim();
+          const printName = document.querySelector('.p-name');
+          if (printName) printName.textContent = currentName;
+          const cleanName = currentName.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '');
+          document.title = `${cleanName || 'Professional_CV'}_CV`;
+          window.print();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
-```
