@@ -2151,6 +2151,7 @@ footer{
 
 <!-- EDUCATION -->
 
+<!-- EDUCATION -->
 <section id="education">
 
     <div class="section-header">
@@ -2220,34 +2221,12 @@ footer{
             </p>
         </div>
 
-
-</section>
-
-    </div>
-
-</section>
-
-</div> <!-- CLOSE timeline -->
-
-</section> <!-- CLOSE education -->
-
-    </div>
-
-
-</div>
-
-</section>
-            </p>
-
-        </div>
-
     </div>
 
 </section>
 
 
 <!-- CONTACT -->
-
 <section id="contact">
 
     <div class="contact-container reveal">
@@ -2268,8 +2247,7 @@ footer{
                 Phone
             </a>
 
-            <a href="https://https://github.com/mia03-bit
-               target="_blank">
+            <a href="https://github.com/mia03-bit" target="_blank">
                 GitHub
             </a>
 
@@ -2280,22 +2258,17 @@ footer{
 </section>
 
 
+<!-- FOOTER -->
 <footer>
-
     R-Mia M. Vidal — Information Technology
-
 </footer>
 
 
 <script>
 
-/* Scroll reveal */
+const reveals = document.querySelectorAll(".reveal");
 
-const reveals =
-document.querySelectorAll(".reveal");
-
-const observer =
-new IntersectionObserver(
+const observer = new IntersectionObserver(
     entries => {
 
         entries.forEach(entry => {
@@ -2310,9 +2283,10 @@ new IntersectionObserver(
 
     },
     {
-        threshold:.15
+        threshold: .15
     }
 );
+
 
 reveals.forEach(element => {
 
@@ -2321,41 +2295,30 @@ reveals.forEach(element => {
 });
 
 
-/* Project 3D hover */
+document.querySelectorAll(".project").forEach(card => {
 
-document.querySelectorAll(".project")
-.forEach(card => {
+    card.addEventListener("mousemove", event => {
 
-    card.addEventListener("mousemove",event => {
+        const rect = card.getBoundingClientRect();
 
-        const rect =
-        card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
 
-        const x =
-        event.clientX - rect.left;
+        const rotateY = ((x / rect.width) - .5) * 5;
+        const rotateX = ((y / rect.height) - .5) * -5;
 
-        const y =
-        event.clientY - rect.top;
-
-        const rotateY =
-        ((x / rect.width) - .5) * 5;
-
-        const rotateX =
-        ((y / rect.height) - .5) * -5;
-
-        card.style.transform =
-        `
-        translateY(-12px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
+        card.style.transform = `
+            translateY(-12px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
         `;
 
     });
 
 
-    card.addEventListener("mouseleave",() => {
+    card.addEventListener("mouseleave", () => {
 
-        card.style.transform="";
+        card.style.transform = "";
 
     });
 
