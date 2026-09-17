@@ -200,6 +200,1006 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
+    overflow: hidden;
+}
+
+.profile-inner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:100px 8%;
+}
+
+.section-header{
+    max-width:1100px;
+    margin:0 auto 50px;
+}
+
+.section-header span{
+    color:var(--pink);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:4px;
+}
+
+.section-header h2{
+    font-family:"Playfair Display",serif;
+    font-size:60px;
+    margin-top:10px;
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.card{
+    padding:38px;
+    border-radius:30px;
+
+    background:rgba(255,255,255,.7);
+    border:1px solid white;
+
+    box-shadow:0 20px 50px rgba(201,79,124,.08);
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 30px 60px rgba(201,79,124,.15);
+}
+
+.card h3{
+    color:var(--darkpink);
+    margin-bottom:18px;
+}
+
+.card p{
+    color:var(--gray);
+    line-height:1.8;
+}
+
+/* ================= SKILLS ================= */
+
+.skills{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.skill-card{
+    padding:38px;
+    border-radius:30px;
+    background:white;
+    box-shadow:0 20px 50px rgba(201,79,124,.08);
+}
+
+.skill-card h3{
+    margin-bottom:25px;
+    color:var(--darkpink);
+}
+
+.skill{
+    margin:20px 0;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.bar{
+    height:8px;
+    border-radius:20px;
+    background:#ffe1eb;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ff9cbd,#d95789);
+    transform-origin:left;
+    animation:barAnimation 1.5s ease;
+}
+
+@keyframes barAnimation{
+
+    from{
+        transform:scaleX(0);
+    }
+
+    to{
+        transform:scaleX(1);
+    }
+
+}
+
+/* ================= PROJECTS ================= */
+
+.projects-section{
+    background:rgba(255,220,234,.35);
+}
+
+.projects-grid{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.project{
+    position:relative;
+    overflow:hidden;
+
+    min-height:300px;
+    padding:35px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.95),
+        rgba(255,233,242,.9));
+
+    border:1px solid white;
+
+    box-shadow:0 20px 50px rgba(201,79,124,.1);
+
+    transition:.4s;
+
+    transform-style:preserve-3d;
+}
+
+.project::before{
+    content:"";
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:#ffd3e2;
+
+    right:-90px;
+    top:-90px;
+
+    transition:.5s;
+}
+
+.project:hover{
+    transform:translateY(-12px);
+    box-shadow:0 30px 70px rgba(201,79,124,.2);
+}
+
+.project:hover::before{
+    transform:scale(2.4);
+}
+
+.project-content{
+    position:relative;
+    z-index:2;
+}
+
+.project-number{
+    color:var(--pink);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.project h3{
+    font-family:"Playfair Display",serif;
+    font-size:32px;
+    margin:15px 0 10px;
+}
+
+.project-tech{
+    display:inline-block;
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    background:#ffdce8;
+    color:#bb4d77;
+
+    font-size:10px;
+    font-weight:800;
+
+    margin-bottom:18px;
+}
+
+.project p{
+    color:var(--gray);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* FEATURED */
+
+.featured{
+    grid-column:span 2;
+    min-height:380px;
+
+    background:
+        radial-gradient(circle at 90% 30%,#ffc3d8,transparent 28%),
+        linear-gradient(135deg,#ffffff,#ffe7f0);
+}
+
+.featured h3{
+    font-size:48px;
+    max-width:800px;
+}
+
+.featured p{
+    max-width:750px;
+}
+
+/* ================= EDUCATION ================= */
+
+.timeline{
+    max-width:900px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+
+    left:18px;
+    top:0;
+    bottom:0;
+
+    width:3px;
+
+    background:#f3b0c8;
+}
+
+.timeline-item{
+    position:relative;
+    padding:0 0 45px 65px;
+}
+
+.timeline-dot{
+    position:absolute;
+
+    left:5px;
+    top:0;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:#ff79a8;
+
+    border:6px solid #ffe5ef;
+
+    box-shadow:0 0 0 3px #f3b0c8;
+}
+
+.timeline-item h3{
+    color:var(--darkpink);
+}
+
+.timeline-item p{
+    color:var(--gray);
+    margin-top:8px;
+    line-height:1.7;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-container{
+    max-width:1000px;
+    margin:auto;
+
+    padding:60px 40px;
+
+    border-radius:40px;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+        linear-gradient(135deg,#ff9fc0,#d95789);
+
+    box-shadow:0 30px 70px rgba(201,79,124,.25);
+}
+
+.contact-container h2{
+    font-family:"Playfair Display",serif;
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.contact-container p{
+    opacity:.9;
+    margin-bottom:30px;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.contact-links a{
+    text-decoration:none;
+    color:white;
+
+    padding:12px 20px;
+
+    border:1px solid rgba(255,255,255,.5);
+
+    border-radius:30px;
+
+    transition:.3s;
+}
+
+.contact-links a:hover{
+    background:white;
+    color:#d95789;
+    transform:translateY(-4px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:35px;
+    text-align:center;
+    color:#a27c89;
+    font-size:13px;
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero-container,
+    .about-grid,
+    .skills,
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured{
+        grid-column:span 1;
+    }
+
+    .featured h3{
+        font-size:35px;
+    }
+
+    .profile{
+        width:250px;
+        height:250px;
+    }
+
+    .section-header h2{
+        font-size:45px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+    }
+
+    .contact-container h2{
+        font-size:40px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        R-Mia M. Vidal
+    </div>
+
+    <ul>
+
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-container">
+
+        <div class="reveal">
+
+            <div class="hero-label">
+                Information Technology
+            </div>
+
+            <h1>
+                R-Mia<br>
+                <span>Vidal</span>
+            </h1>
+
+            <p class="hero-description">
+                Dedicated Information Technology student with a growing passion
+                for exploring and mastering the dynamic field of IT. Experienced
+                in collaborative programming, having developed simple applications
+                as part of a team.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    Explore Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Get In Touch
+                </a>
+
+            </div>
+
+        </div>
+
+
+       <div class="profile-wrapper reveal">
+
+     <div class="profile">
+
+        <div class="profile-inner">
+
+           <img src="vidal-profile.png" alt="R-Mia M. Vidal">
+
+        </div>
+
+     </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="section-header reveal">
+
+        <span>01 — ABOUT</span>
+
+        <h2>About Me</h2>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="card reveal">
+
+            <h3>Profile</h3>
+
+            <p>
+                Dedicated Information Technology student with a growing passion
+                for exploring and mastering the dynamic field of IT. Experienced
+                in collaborative programming, having developed simple applications
+                as part of a team.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <h3>Technical Background</h3>
+
+            <p>
+                Proficient in foundational programming languages and tools,
+                including Python, Java, HTML, CSS, PHP, Kotlin, and Jetpack
+                Compose. Eager to continue building technical expertise while
+                contributing to innovative projects.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="section-header reveal">
+
+        <span>02 — SKILLS</span>
+
+        <h2>My Skills</h2>
+
+    </div>
+
+
+    <div class="skills">
+
+
+        <div class="skill-card reveal">
+
+            <h3>Technical Skills</h3>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>HTML & CSS</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:90%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Java</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:80%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Python</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:80%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Kotlin</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:75%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill-card reveal">
+
+            <h3>Personal Skills</h3>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Time Management</span>
+                    <span>90%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:90%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Leadership</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:85%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Critical Thinking</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:85%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Team Collaboration</span>
+                    <span>95%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:95%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>Project Manager</span>
+                    <span>80%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:80%"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-top">
+                    <span>UI/UX Design</span>
+                    <span>85%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:85%"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section class="projects-section" id="projects">
+
+    <div class="section-header reveal">
+
+        <span>03 — PROJECTS</span>
+
+        <h2>School Projects</h2>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+
+        <div class="project reveal">
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>Budget Tracker</h3>
+
+                <span class="project-tech">
+                    JAVA | FIRST YEAR — SECOND SEMESTER
+                </span>
+
+                <p>
+                    The Budget Tracker helps monitor how much of your budget
+                    has been spent over time and allows comparison between
+                    monthly and weekly spending.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>Cooking Buddy</h3>
+
+                <span class="project-tech">
+                    HTML AND CSS | FIRST YEAR — SECOND SEMESTER
+                </span>
+
+                <p>
+                    Cooking Buddy is a user-friendly recipe generator designed
+                    to simplify meal planning and cooking by turning available
+                    pantry ingredients into Filipino dishes.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>Geography Snap</h3>
+
+                <span class="project-tech">
+                    KOTLIN AND PHP | SECOND YEAR — FIRST SEMESTER
+                </span>
+
+                <p>
+                    Geography Snap is a mobile game designed to test players'
+                    knowledge of geography through challenges such as identifying
+                    flags and capitals. It includes multiple difficulty levels,
+                    unlockable content, and a leaderboard.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>AutoLink</h3>
+
+                <span class="project-tech">
+                    HTML, CSS AND JAVASCRIPT | SECOND YEAR — SECOND SEMESTER
+                </span>
+
+                <p>
+                    AutoLink is an all-in-one platform for car owners and service
+                    providers. It helps car owners manage vehicle maintenance,
+                    track fuel efficiency, and connect with service centers.
+                    The web portal enables mechanics and service providers to
+                    manage appointments and customer histories.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <div class="section-header reveal">
+
+        <span>04 — EDUCATION</span>
+
+        <h2>Education & Background</h2>
+
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <h3>Bachelor of Science in Information Technology</h3>
+            <p>Currently pursuing higher education with an emphasis on systems analysis, web and mobile development    font-size:12px;
+    font-weight:800;
+    color:var(--pink);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(60px,8vw,105px);
+    line-height:.9;
+    margin-bottom:30px;
+}
+
+.hero h1 span{
+    color:var(--pink);
+}
+
+.hero-description{
+    max-width:650px;
+    color:var(--gray);
+    line-height:1.8;
+    font-size:16px;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    text-decoration:none;
+    padding:14px 25px;
+    border-radius:30px;
+    font-weight:700;
+    transition:.35s;
+}
+
+.btn-primary{
+    color:white;
+    background:linear-gradient(135deg,#ff8fb6,#d85688);
+    box-shadow:0 12px 25px rgba(216,86,136,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 20px 35px rgba(216,86,136,.35);
+}
+
+.btn-secondary{
+    color:var(--darkpink);
+    border:1px solid #efb1c7;
+    background:white;
+}
+
+.btn-secondary:hover{
+    background:#ffe3ed;
+    transform:translateY(-5px);
+}
+
+/* ================= PROFILE ================= */
+
+.profile-wrapper{
+    display:flex;
+    justify-content:center;
+}
+
+.profile{
+    width:310px;
+    height:310px;
+    border-radius:50%;
+
+    background:
+        linear-gradient(145deg,#ffb1ca,#f5d0dd);
+
+    padding:18px;
+
+    box-shadow:
+        0 0 0 12px rgba(255,255,255,.7),
+        0 30px 70px rgba(201,79,124,.2);
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.profile-inner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:#fff7fa;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
 .profile-inner h2{
