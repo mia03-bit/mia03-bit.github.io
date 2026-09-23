@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+:root {
+  --text: #000000;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 16px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
+}
+
+#root {
+  /* Make the app full-bleed so split layouts can span the full viewport */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  min-height: 100svh;
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Keep touch controls usable and prevent phone browsers zooming into forms. */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+  select,
+  textarea {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  button {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  color: inherit;
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: hsl(214.3 31.8% 91.4%);
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .no-number-arrows::-webkit-inner-spin-button,
+  .no-number-arrows::-webkit-outer-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+  .no-number-arrows {
+    -moz-appearance: textfield;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(203 213 225);
+    border-radius: 3px;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@layer components {
+  .input {
+    @apply h-11 w-full rounded-xl border border-slate-300 bg-slate-100 px-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10;
+  }
+}
+
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  html, body { height: auto !important; min-height: 0 !important; overflow: visible !important; background: white !important; }
+  body:has(.print-payslip) *:not(:has(.print-payslip)):not(.print-payslip):not(.print-payslip *) { display: none !important; }
+  body:has(.print-payslip) *:has(.print-payslip) { min-height: 0 !important; height: auto !important; max-height: none !important; overflow: visible !important; margin: 0 !important; padding: 0 !important; }
+  .print-payslip, .print-payslip * { visibility: visible !important; }
+  .print-payslip { position: static !important; inset: auto !important; width: 100%; max-width: none !important; padding: 0; background: white; color: #0f172a; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .print-payslip button { display: none !important; }
+  .no-print { display: none !important; }
+  .payroll-print-page { break-after: page; page-break-after: always; min-height: 272mm; }
+  .payroll-print-page:last-child { break-after: auto; page-break-after: auto; }
+  .payroll-print-card { break-inside: avoid; page-break-inside: avoid; min-height: 118mm; }
+}
+
+/* Payroll selection is deliberately labeled for non-technical users. */
+[data-guide="payroll-hub"] th:first-child {
+  min-width: 88px;
+  white-space: nowrap;
+}
+[data-guide="payroll-hub"] th:first-child::after {
+  content: " Select";
+  text-transform: none;
+  letter-spacing: normal;
+}
+[data-guide="payroll-hub"] tbody td:first-child:has(input:disabled) input {
+  display: none;
+}
+[data-guide="payroll-hub"] tbody td:first-child:has(input:disabled)::after {
+  content: "-";
+  color: #94a3b8;
+}
+[data-guide="payroll-filters"] > div {
+  padding-top: 1rem;
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translate3d(16px, -8px, 0) scale(.98); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes toast-timer {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+.animate-toast-in { animation: toast-in .24s ease-out both; }
+.animate-toast-timer { animation: toast-timer linear both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-toast-in, .animate-toast-timer { animation: none; }
+}

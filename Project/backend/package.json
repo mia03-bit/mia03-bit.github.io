@@ -1,0 +1,26 @@
+{
+  "name": "workpulseai-backend",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed:employees": "node seed.js",
+    "seed:admin": "node seed-admin.js",
+    "seed:ai": "node seed-ai-test-data.js",
+    "audit:security": "node audit-report.js",
+    "seed:employee:deocares": "node seed-employee-account.js",
+    "seed:attendance:deocares": "node seed-deocares-attendance.js",
+    "seed:test:red-flag": "node seed-red-flag-test-employee.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "mongodb": "^7.5.0",
+    "mongoose": "^9.7.4",
+    "nodemailer": "^9.0.3"
+  }
+}
