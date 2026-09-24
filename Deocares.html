@@ -4,291 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emmanuel Deocares - Resume Portfolio</title>
+    
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.3);
-            --border: #334155;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 30px;
-        }
-
-        /* --- LEFT SIDEBAR --- */
-        .sidebar {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .profile-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 4px solid var(--accent);
-            object-fit: cover;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        .profile-section h1 {
-            font-size: 1.5rem;
-            margin-top: 15px;
-            letter-spacing: 1px;
-        }
-
-        .profile-section p {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .sidebar-section {
-            margin-bottom: 25px;
-        }
-
-        .sidebar-section h3 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 5px;
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-
-        .contact-list, .skills-list, .tools-list {
-            list-style: none;
-        }
-
-        .contact-list li {
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            word-break: break-all;
-        }
-
-        .contact-list a {
-            color: var(--text-sub);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-list a:hover {
-            color: var(--accent);
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--accent-glow);
-        }
-
-        .edu-item {
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-        }
-
-        .edu-item h4 {
-            color: var(--text-main);
-        }
-
-        .edu-item span {
-            color: var(--text-sub);
-            font-size: 0.75rem;
-        }
-
-        .edu-item ul {
-            padding-left: 15px;
-            margin-top: 5px;
-            color: var(--text-sub);
-        }
-
-        /* --- MAIN CONTENT --- */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--accent);
-        }
-
-        .profile-text {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        /* --- PROJECT TIMELINE & ANIMATIONS --- */
-        .timeline {
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--border);
-        }
-
-        .project-card {
-            position: relative;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #111827;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Animation class added via Javascript */
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hover animation for Project Cards */
-        .project-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px -5px var(--accent-glow);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            left: -29px;
-            top: 25px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 8px;
-        }
-
-        .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .project-date {
-            font-size: 0.8rem;
-            color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .project-type {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .project-desc {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-        }
-
-        .project-features {
-            margin-top: 10px;
-            padding-left: 18px;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 850px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                position: static;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="deocares.css">
 </head>
 <body>
 
-    <div class="container">
+    <!-- FLOATING ACTIONS / PRINT BUTTON -->
+    <div class="no-print floating-actions">
+        <button id="print-resume" type="button" class="print-btn">
+            <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+    </div>
+
+    <!-- PAGE 1 CONTENT -->
+    <div class="container page-1">
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="profile-section">
-                <!-- Replace 'profile.jpg' with your actual image file or path -->
-                <img src="deocares-picture.png" alt="Emmanuel Deocares" class="profile-img" onerror="this.src='https://via.placeholder.com/140'">
+                <img src="deocares-picture.png" alt="Emmanuel Deocares" class="profile-img">
                 <h1>EMMANUEL DEOCARES</h1>
                 <p>Aspiring Data Analyst</p>
             </div>
@@ -318,7 +56,7 @@
                     <span>NOV 2023 - PRESENT</span>
                     <ul>
                         <li>Certificate of Python Seminar for IT Freshmen Students</li>
-                        <li>Hakaton</li>
+                        <li>Hackathon</li>
                         <li>PowerBI Seminar</li>
                     </ul>
                 </div>
@@ -356,7 +94,7 @@
             <section class="card">
                 <h2 class="section-title"><i class="fa-solid fa-user"></i> Profile</h2>
                 <p class="profile-text">
-                    I'm an IT student working toward a career in Data Analysis. Through my studies and hands-on projects, I've learned how to take raw information, uncover meaningful patterns, and turn it into clear visual insights. My background in software development gives me a great technical foundation for working with complex data structures, and I'm especially fascinated by AI and how smart algorithms process information. I'm always eager to learn, solve new problems, and help make sense of real-world data!
+                    I'm an IT student working toward a career in Data Analysis. Through my studies and hands-on projects, I've learned how to take raw information, uncover meaningful patterns, and turn it into clear visual insights. My background in software development gives me a great technical foundation for working with complex data structures, and I'm especially fascinated by AI and how smart algorithms process information.
                 </p>
             </section>
 
@@ -368,69 +106,49 @@
                     <!-- Project Card 1 -->
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-title">QuestionPro</div>
-                            <div class="project-date">NOVEMBER 2023</div>
+                            <div class="project-title">Silent Revenge - Horror Game</div>
+                            <div class="project-date">2024</div>
                         </div>
-                        <div class="project-type">Game / First-Year Project</div>
-                        <p class="project-desc">A team-created, user-friendly Question-and-Answer game focused on general knowledge. It allows users to select their preferred category and provides feedback based on their score.</p>
+                        <div class="project-type">Second Year Project | Unity | Database | Figma</div>
+                        <p class="project-desc">A 2D horror mystery game about a brother seeking revenge for his sister's unjust death. Players explore interactive levels, face an approachable final boss, and save their progress to continue later.</p>
                     </div>
 
                     <!-- Project Card 2 -->
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-title">Botany Hunt and Artist Flair</div>
-                            <div class="project-date">2023 and 2024</div>
+                            <div class="project-title">HopeBridge</div>
+                            <div class="project-date">2025</div>
                         </div>
-                        <div class="project-type">Mystery Game & Online Gallery / First-Year Project</div>
-                        <p class="project-desc">An easy team-built Q&A mystery game and online gallery where users pick general knowledge categories and receive feedback based on their performance score.</p>
+                        <div class="project-type">Second Year Project | Android Studio | Database | HTML, CSS, JS</div>
+                        <p class="project-desc">A mobile application for donating funds, clothes, and essential goods to people affected by fires, floods, and other natural disasters.</p>
+                        <ul class="project-features">
+                            <li>Donation portal with progress and status tracking</li>
+                            <li>Notifications for local donation drives and relief efforts</li>
+                            <li>Admin interface for managing donations and reports</li>
+                        </ul>
                     </div>
 
                     <!-- Project Card 3 -->
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-title">QuestionPro (Updated)</div>
-                            <div class="project-date">2024</div>
+                            <div class="project-title">ArtSpace</div>
+                            <div class="project-date">2026</div>
                         </div>
-                        <div class="project-type">Game / First-Year Project</div>
-                        <p class="project-desc">A team-created, user-friendly Question-and-Answer game focused on general knowledge with expanded categories and improved feedback interactions.</p>
+                        <div class="project-type">Third Year Project | VS Code | MongoDB | Admin Dashboard</div>
+                        <p class="project-desc">A web-based gallery platform built for real-life users, complete with user account management, email integration, and administration dashboards.</p>
                     </div>
 
                     <!-- Project Card 4 -->
                     <div class="project-card">
                         <div class="project-header">
-                            <div class="project-title">HopeBridge</div>
-                            <div class="project-date">2025</div>
-                        </div>
-                        <div class="project-type">Web Application / Second-Year Project</div>
-                        <p class="project-desc">A platform for donating funds, clothes, and essential goods to victims of natural disasters (such as fires and floods).</p>
-                        <ul class="project-features">
-                            <li>Donation Portal</li>
-                            <li>Donation Tracking</li>
-                            <li>Admin Interface</li>
-                        </ul>
-                    </div>
-
-                    <!-- Project Card 5 -->
-                    <div class="project-card">
-                        <div class="project-header">
-                            <div class="project-title">ArtSpace</div>
-                            <div class="project-date">2025</div>
-                        </div>
-                        <div class="project-type">Online Gallery Platform / Third-Year Project</div>
-                        <p class="project-desc">A powerful web-based gallery platform built for real-life users, complete with user accounts, email integration, and administration dashboards.</p>
-                    </div>
-
-                    <!-- Project Card 6 -->
-                    <div class="project-card">
-                        <div class="project-header">
                             <div class="project-title">WorkPulse</div>
-                            <div class="project-date">2025 - 2026</div>
+                            <div class="project-date">2026</div>
                         </div>
-                        <div class="project-type">Web-Based Attendance & Workforce Analytics / Capstone Project</div>
-                        <p class="project-desc">An attendance and workforce analytics platform integrated with modern features:</p>
+                        <div class="project-type">Third Year Project | VS Code | MongoDB</div>
+                        <p class="project-desc">A web-based attendance and workforce analytics platform with AI-assisted calculations and tools for monitoring AI accuracy.</p>
                         <ul class="project-features">
-                            <li>AI facial recognition and fingerprint for registration and clocking in/out</li>
-                            <li>AI-driven predictive analytics for forecasting absences and managing model accuracy</li>
+                            <li>Facial recognition for registration, login, and clocking in/out</li>
+                            <li>Absence forecasting and basic blockchain integration for payroll</li>
                         </ul>
                     </div>
 
@@ -439,29 +157,71 @@
         </main>
     </div>
 
-    <!-- Scroll & Entrance Animation Script -->
+    <!-- PAGE 2 CONTENT (PROJECT GALLERY & SHOWCASE) -->
+    <section class="print-portfolio-page">
+        <h2 class="gallery-title"><i class="fa-solid fa-images"></i> Project Visual Gallery</h2>
+        
+        <div class="gallery-grid">
+            <!-- Project 1 Gallery -->
+            <div class="project-gallery-item">
+                <h3>1. Silent Revenge - Horror Game</h3>
+                <p>Unity | Database | Figma</p>
+                <div class="image-trio">
+                    <img src="deocares/images/silent-rev/silent-rev-1.png" alt="Silent Revenge Screenshot 1">
+                    <img src="deocares/images/silent-rev/silent-rev-2.png" alt="Silent Revenge Screenshot 2">
+                    <img src="deocares/images/silent-rev/silent-rev-3.png" alt="Silent Revenge Screenshot 3">
+                </div>
+            </div>
+
+            <!-- Project 2 Gallery -->
+            <div class="project-gallery-item project-gallery-mobile">
+                <h3>2. HopeBridge - Web/Application</h3>
+                <p>Android Studio | HTML/CSS/JS | Database</p>
+                <div class="image-trio">
+                    <img src="deocares/images/hopeb/hopebridge-1.png" alt="HopeBridge Screenshot 1">
+                    <img src="deocares/images/hopeb/hopebridge-2.png" alt="HopeBridge Screenshot 2">
+                    <img src="deocares/images/hopeb/hopebridge-3.png" alt="HopeBridge Screenshot 3">
+                </div>
+            </div>
+
+            <!-- Project 3 Gallery -->
+            <div class="project-gallery-item">
+                <h3>3. ArtSpace - Online Gallery Platform</h3>
+                <p>2026 | VS Code | MongoDB | Admin Dashboard</p>
+                <div class="image-trio">
+                    <img src="deocares/images/artspace/artspace-1.png" alt="ArtSpace Screenshot 1">
+                    <img src="deocares/images/artspace/artspace-2.png" alt="ArtSpace Screenshot 2">
+                    <img src="deocares/images/artspace/artspace-3.png" alt="ArtSpace Screenshot 3">
+                </div>
+            </div>
+
+            <!-- Project 4 Gallery -->
+            <div class="project-gallery-item">
+                <h3>4. WorkPulse - Attendance & Workforce Analytics</h3>
+                <p>2026 | VS Code | MongoDB | Finger Scaner</p>
+                <div class="image-trio">
+                    <img src="deocares/images/workpulse/workpulse-1.png" alt="WorkPulse Screenshot 1">
+                    <img src="deocares/images/workpulse/workpulse-2.png" alt="WorkPulse Screenshot 2">
+                    <img src="deocares/images/workpulse/workpulse-3.png" alt="WorkPulse Screenshot 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        // Staggered delay for smooth entrance animation
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => observer.observe(card));
+        document.getElementById('print-resume').addEventListener('click', async function () {
+            this.disabled = true;
+            try {
+                await Promise.all(Array.from(document.images, image =>
+                    image.decode().catch(() => {})
+                ));
+                await document.fonts.ready;
+                window.print();
+            } finally {
+                this.disabled = false;
+            }
         });
     </script>
 </body>
-    </html>
-    
+</html>
