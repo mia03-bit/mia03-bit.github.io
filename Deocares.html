@@ -279,9 +279,117 @@
                 position: static;
             }
         }
+
+
+        /* --- PRINT BUTTON --- */
+        .print-toolbar {
+            max-width: 1100px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .print-btn {
+            border: 0;
+            background: var(--accent);
+            color: #0f172a;
+            font-weight: 700;
+            padding: 11px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .print-btn:hover { opacity: 0.9; }
+
+        /* Print the same CV content in a clean A4 layout. The browser will
+           automatically create a second page when the content is too long. */
+        @page {
+            size: A4;
+            margin: 10mm;
+        }
+
+        @media print {
+            :root {
+                --bg-color: #0f172a;
+                --card-bg: #1e293b;
+                --text-main: #f8fafc;
+                --text-sub: #cbd5e1;
+                --accent: #38bdf8;
+                --accent-glow: rgba(56, 189, 248, 0.3);
+                --border: #475569;
+            }
+
+            html, body {
+                width: 100%;
+                background: var(--bg-color) !important;
+                color: var(--text-main) !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body { padding: 0; }
+            .print-toolbar { display: none !important; }
+
+            .container {
+                max-width: none;
+                width: 100%;
+                margin: 0;
+                grid-template-columns: 29% 1fr;
+                gap: 12px;
+                align-items: start;
+            }
+
+            .sidebar {
+                position: static;
+                padding: 16px 12px;
+                border-radius: 10px;
+                height: auto;
+            }
+
+            .main-content { gap: 12px; }
+            .card { padding: 16px; border-radius: 10px; }
+            .profile-section { margin-bottom: 15px; }
+            .profile-img { width: 90px; height: 90px; }
+            .profile-section h1 { font-size: 1.05rem; margin-top: 8px; }
+            .profile-section p { font-size: 0.68rem; }
+            .sidebar-section { margin-bottom: 14px; }
+            .sidebar-section h3 { font-size: 0.78rem; margin-bottom: 7px; }
+            .contact-list li, .edu-item { font-size: 0.65rem; margin-bottom: 6px; }
+            .edu-item span { font-size: 0.58rem; }
+            .tag { font-size: 0.58rem; padding: 2px 6px; }
+            .tags { gap: 4px; }
+            .section-title { font-size: 1rem; margin-bottom: 8px; }
+            .profile-text { font-size: 0.69rem; line-height: 1.45; }
+            .timeline { padding-left: 14px; }
+            .project-card {
+                opacity: 1 !important;
+                transform: none !important;
+                margin-bottom: 8px;
+                padding: 10px;
+                border-radius: 8px;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .project-card::before { left: -21px; top: 17px; width: 8px; height: 8px; }
+            .project-title { font-size: 0.78rem; }
+            .project-date, .project-type, .project-desc, .project-features { font-size: 0.62rem; }
+            .project-type { margin-bottom: 4px; }
+            .project-features { margin-top: 4px; }
+
+            /* Keep major sections readable; page 2 is created automatically if needed. */
+            .card, .sidebar-section { break-inside: auto; }
+        }
+
     </style>
 </head>
 <body>
+    <div class="print-toolbar">
+        <button class="print-btn" type="button" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> Print CV
+        </button>
+    </div>
+
 
     <div class="container">
         <!-- SIDEBAR -->
